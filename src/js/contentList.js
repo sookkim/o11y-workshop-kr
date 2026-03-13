@@ -375,6 +375,14 @@ var CONTENTS = [
           },
         ],
       },
+      {
+        id: '4', // required. page ID
+        title: 'Real User Monitoring', // required. Bread crumbs text
+        menuName: 'Real User Monitoring', // required. Side bar text
+        href: '/o11y-workshop-kr/src/4-realUserMonitoring/4-index.html', // required. HTML file path
+        prev: '3-8',
+        next: '4-1',
+      },
     ],
   },
 ];
