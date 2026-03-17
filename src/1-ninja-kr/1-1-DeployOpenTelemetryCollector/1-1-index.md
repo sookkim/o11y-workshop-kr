@@ -1,8 +1,12 @@
 # Deploy the OpenTelemetry Collector
 
+</br>
+
 ## Understanding What is Splunk Observability Cloud
 
-<img src="../../images/1-ninja-kr/1-1-intro.jpg" width="700" style="border: 1px solid #000; display: block; margin-left: 0;">
+<img src="../../images/1-ninja-kr/1-1-intro.jpg" width="1000" style="border: 1px solid #000; display: block; margin-left: 0;">
+
+</br>
 
 ## Uninstall the OpenTelemetry Collector
 
