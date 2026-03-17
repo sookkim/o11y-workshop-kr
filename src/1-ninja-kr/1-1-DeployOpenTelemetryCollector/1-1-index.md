@@ -8,6 +8,10 @@
 
 </br>
 
+<img src="../../images/1-ninja-kr/1-1-architecture.jpg" width="1200" style="border: 1px solid #000; display: block; margin-left: 0;">
+
+</br>
+
 ## Uninstall the OpenTelemetry Collector
 
 이미 Splunk OpenTelemetry가 구동중이라면 다음 커맨드를 통하여 Otel을 삭제해야합니다.
