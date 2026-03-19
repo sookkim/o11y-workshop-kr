@@ -334,6 +334,33 @@
                   </span><span class=badge-content>Sep 18, 2024</span></span></footer>
         </article>
         -->
+          <footer class="footline">
+            <span class="badge cstyle note badge-with-title">
+              <span class="badge-title text-muted">Last Modified</span>
+              <span class="badge-content" id="last-modified-date">Loading...</span>
+            </span>
+          </footer>
+
+          <script>
+            (function () {
+              const el = document.getElementById("last-modified-date");
+              if (!el) return;
+
+              const raw = document.lastModified;
+              const date = new Date(raw);
+
+              if (!raw || isNaN(date.getTime())) {
+                el.textContent = "Unknown";
+                return;
+              }
+
+              el.textContent = date.toLocaleDateString("en-US", {
+                year: "numeric",
+                month: "short",
+                day: "numeric"
+              });
+            })();
+          </script>
       </div>
     </main>
   </div>
