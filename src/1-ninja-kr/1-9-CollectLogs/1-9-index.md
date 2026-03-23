@@ -8,7 +8,7 @@
 
 </br>
 
-## Set up logging in your application
+## 1. Set up logging in your application
 
 현재 이 PetClinic 애플리케이션은 콘솔로만 로그를 출력 할 뿐, 아무곳에도 로그를 남기고 있지 않습니다. 따라서 INFO, ERROR 로그를 우선 파일 형태로 떨굴 수 있도록 스프링부트 설정을 변경하고 새로 빌드를 하도록 하겠습니다.
 
@@ -91,7 +91,7 @@
 
 </br>
 
-## Collect file logs in Splunk Cloud
+## 2. Collect file logs in Splunk Cloud
 
 로그 수집을 위한 플랫폼은 [Splunk Enterprise 핸즈온 환경 접속 정보](https://cisco.box.com/s/j0l2wwfbiuid0jsw5709cjo0zoke7hvk) 파일에서 확인 할 수 있습니다.
 
@@ -172,6 +172,56 @@
    `index=main sourcetype=<실습자이름>`
 
     <img src="../../images/1-ninja-kr/1-9-logcollection.jpg" width="1200" style="border: 1px solid #000; display: block; margin-left: 0;">
+   - 위 스크린샷 처럼 아랫쪽에 수집되는 로그가 표시된다면 성공입니다
+
+</br>
+
+## 3. Challenge!! 🚀
+
+로그를 잘 살펴보신 분들은 아시겠지만, 멀티라인으로 기록되는 자바 로그가 줄바꿈이 될 때마다 따로 수집되는 것을 확인 할 수 있습니다.
+
+다음 실습을 진행하는데는 지장이 없지만 실습을 해보고 싶으신 분들은 아래 내용을 따라 Multi-line aggregation 을 테스트 해 봅니다.
+
+- 리눅스 환경에서 agent_config.yaml 파일을 열어 수정합니다
+
+  ```bash
+  cd /etc/otel/collector
+
+  sudo vi agent_config.yaml
+  ```
+
+- 아래와 같이 멀티라인 설정을 넣은 후 저장합니다
+
+  ```bash
+  # agent_config.yaml
+
+  receivers:
+   filelog:
+     include:
+       - /home/splunk/spring-petclinic/logs/petclinic.log
+     start_at: beginning
+     multiline:
+      line_start_pattern: '^\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}'
+     include_file_path: true
+     include_file_name: true
+  ```
+
+- 설정을 완료했다면 에이전트를 재시작합니다
+
+  ```bash
+  sudo systemctl restart splunk-otel-collector
+
+  systemctl status splunk-otel-collector
+  ```
+
+- 이제 다시 Splunk Enterprise 로 가서 로그를 검색 해 봅니다. 여러 줄의 로그가 하나의 로그로 인식되어 처리됐나요?
+  <img src="../../images/1-ninja-kr/1-9-multiline.jpg" width="1200" style="border: 1px solid #000; display: block; margin-left: 0;">
+
+</br>
+
+---
+
+**Module 1-9. Collect logs to Splunk Cloud DONE!**
 
 <!--
      K8S 환경은 해당내용을 참조하세요
