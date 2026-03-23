@@ -21,7 +21,7 @@
 | 14:30~14:50 | 2      | [Pet Clinic JAVA APP 구동시키기](./1-2-DeployJavaAPP/1-2-index.html)                      | 20분      |
 | 14:50~15:20 | 3      | [Java Instrumentation (**APM**)](./1-3-InstrumentJavaAPPwithOpenTelemetry/1-3-index.html) | 30분      |
 | 15:20~15:40 | 9      | [Log collection to Splunk Cloud (**Log**)](./1-9-CollectLogs/1-9-index.html)              | 20분      |
-| 15:40~15:50 | 13     | Set up Related Content                                                                    | 20분      |
+| 15:40~15:50 | 13     | [Related Content 로 통합 분석하기](./1-13-RelatedContents/1-13-index.html)                | 20분      |
 |             |        | **20 Min Break Time**                                                                     |
 | 16:10~16:20 | 10     | Set Log Observer connector                                                                | 10분      |
 | 16:20~17:00 | 11     | Challenge : MySQL Receiver 추가하기                                                       | 40분      |
