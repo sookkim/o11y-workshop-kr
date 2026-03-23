@@ -15,9 +15,8 @@
 | 시간        | 인덱스 | 내용                                      | 예상 시간 |
 | ----------- | ------ | ----------------------------------------- | --------- |
 | 14:00~14:10 | 0      | 개요 설명 & 실습 환경 접속                | 10분      |
-|             | 1      | OTel Collector 설치 (Linux)               | 30분      |
+|             | 1      | OTel Collector 설치 (IM)                  | 30분      |
 |             | 2      | Maven Project 구동                        | 20분      |
-|             |        | **10 Min Break Time**                     |
 |             | 3      | Java Instrumentation (APM)                | 10분      |
 |             |        | ~~Dockerize the Application~~             | ~~20분~~  |
 |             |        | ~~Instrumentation for Docker App~~        | ~~20분~~  |

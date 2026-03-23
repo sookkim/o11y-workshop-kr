@@ -35,6 +35,7 @@
 
 </br>
 
+<!--
 ## Checking your practice instance
 
 인스턴스가 올바르게 구성되었는지 확인하기 위해 이 워크샵에 필요한 환경 변수가 올바르게 설정되었는지 확인해야 합니다. 터미널에서 다음 명령을 실행하세요.
@@ -48,6 +49,8 @@
 <img src="../../images/1-ninja-kr/1-1-config.jpg" width="800" style="border: 1px solid #000; display: block; margin-left: 0;">
 
 </br>
+
+-->
 
 ## Deploy the OpenTelemetry Collector
 
@@ -111,12 +114,9 @@ sudo journalctl -u splunk-otel-collector -f -n 100
 sudo journalctl -u splunk-otel-collector -f -n 100 -p err -o short-precise --no-pager
 ```
 
-> </br>
 > [!NOTE]
 >
 > Press Ctrl + C to exit out of tailing the log.
->
-> </br>
 
 <br>
 
