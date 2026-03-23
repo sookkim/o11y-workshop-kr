@@ -102,7 +102,7 @@ sudo usermod -aG docker $USER
 
     </br>
 
-    <img src="../../images/1-ninja-kr/1-1-terminal.jpg" width="600" style="border: 1px solid #000; display: block; margin-left: 0;">
+    <img src="../../images/1-ninja-kr/1-1-terminal.jpg" width="800" style="border: 1px solid #000; display: block; margin-left: 0;">
 
 </br>
 
