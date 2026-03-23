@@ -60,9 +60,9 @@ sudo usermod -aG docker $USER
 
 - 유무선 인터넷 접속
 - SSH 접속 가능한 터미널
-- Observability Cloud 핸즈온 환경 접속 정보 - [링크 클릭](https://cisco.box.com/s/n746fhdpm559hfvepb2w9d9xeqm1c733) **변경 필요**
+- Observability Cloud 핸즈온 환경 접속 정보 - [링크 클릭](https://cisco.box.com/s/zi4ws67vlkeaqbiw39t7ochkpgnc7q9c)
 - Splunk Observability Cloud - Splunk Korea organization 으로 접속
-- Splunk Cloud 핸즈온 환경 접속 정보 - [링크 클릭](https://cisco.box.com/s/n746fhdpm559hfvepb2w9d9xeqm1c733) **변경 필요**
+- Splunk Cloud 핸즈온 환경 접속 정보 - [링크 클릭](https://cisco.box.com/s/j0l2wwfbiuid0jsw5709cjo0zoke7hvk)
 
 </br>
 
@@ -84,7 +84,7 @@ sudo usermod -aG docker $USER
 
 ### SSH 접속을 테스트 해 봅시다
 
-1. 위 사전 준비 정보 중 핸즈온 환경 접속 정보 - [Observability Cloud](https://cisco.box.com/s/n746fhdpm559hfvepb2w9d9xeqm1c733) **변경 필요** 파일을 열어 봅니다
+1. 위 사전 준비 정보 중 핸즈온 환경 접속 정보 - [Observability Cloud](https://cisco.box.com/s/zi4ws67vlkeaqbiw39t7ochkpgnc7q9c) 파일을 열어 봅니다
 2. **ssh** 컬럼에 쓰여진 명령어를 그대로 복사하여 터미널에 붙여넣은 후 패스워드는 **sshPassword** 칼럼을 복사하여 입력합니다
 
    ```bash
