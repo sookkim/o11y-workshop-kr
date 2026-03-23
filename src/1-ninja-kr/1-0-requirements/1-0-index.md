@@ -38,6 +38,8 @@ sudo usermod -aG docker $USER
 
 -->
 
+</br>
+
 ## Understanding What is Splunk Observability Cloud
 
 <img src="../../images/1-ninja-kr/1-1-intro.jpg" width="1200" style="border: 1px solid #000; display: block; margin-left: 0;">
@@ -98,7 +100,9 @@ sudo usermod -aG docker $USER
 
    ```
 
-    <img src="../../images/1-ninja-kr/1-1-terminal.jpg" width="1200" style="border: 1px solid #000; display: block; margin-left: 0;">
+    </br>
+
+    <img src="../../images/1-ninja-kr/1-1-terminal.jpg" width="600" style="border: 1px solid #000; display: block; margin-left: 0;">
 
 </br>
 
