@@ -1,4 +1,4 @@
-# 0. Pre-Requisites : 실습 환경 준비하기
+# 1. Monolith Workshop : 실습 환경 준비하기
 
 <!--
 ## Docker 설치
@@ -37,6 +37,22 @@ sudo usermod -aG docker $USER
 ```
 
 -->
+
+</br>
+
+## Contents
+
+| 시간        | 인덱스 | 내용                                                                                      | 예상 시간 |
+| ----------- | ------ | ----------------------------------------------------------------------------------------- | --------- |
+| 14:00~14:10 | 0      | [개요 설명 & 실습 환경 접속](./1-0-requirements/1-0-index.html)                           | 10분      |
+| 14:10~14:30 | 1      | [OTel Collector 설치 (**IM**)](./1-1-DeployOpenTelemetryCollector/1-1-index.html)         | 30분      |
+| 14:30~14:50 | 2      | [Pet Clinic JAVA APP 구동시키기](./1-2-DeployJavaAPP/1-2-index.html)                      | 20분      |
+| 14:50~15:20 | 3      | [Java Instrumentation (**APM**)](./1-3-InstrumentJavaAPPwithOpenTelemetry/1-3-index.html) | 30분      |
+| 15:20~15:40 | 9      | [Log collection to Splunk Cloud (**Log**)](./1-9-CollectLogs/1-9-index.html)              | 20분      |
+| 15:40~15:50 | 13     | [Related Content 로 통합 분석하기](./1-13-RelatedContents/1-13-index.html)                | 20분      |
+|             |        | **20 Min Break Time**                                                                     |
+| 16:10~16:20 | 10     | Set Log Observer connector                                                                | 10분      |
+| 16:20~17:00 | 11     | Challenge : MySQL Receiver 추가하기                                                       | 40분      |
 
 </br>
 

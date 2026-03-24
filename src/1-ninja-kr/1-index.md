@@ -21,7 +21,7 @@
               </div>
             </a>
             <a href="src/2-Splunk4NinjasITSI/1-index.html" class="card">
-              <img src="src/images/2-ninja-itsi/2-thumbnail2.png" style="width:600px; height:340px;">
+              <img src="https://splunk.github.io/observability-workshop/en/ninja-workshops/1-automatic-discovery/2-petclinic-kubernetes/images/auto-instrumentation-java-diagram.png" style="width:600px; height:340px;">
               <div class="card-body">
                 <h3>Microservice (K8S) Workshop</h3>
                 <p>Kubernetes 환경에 구현 된 애플리케이션을 대상으로 Deamonset 형태의 에이전트를 Helm을 통해 배포하고 Zero-code Instrument 를 통해 인프라, APM, Log 수집을 해 보는 워크샵입니다. </p>
@@ -64,48 +64,11 @@
               font-size: 14px;
             }
           </style>
-          <footer class="footline">
-            <span class="badge cstyle note badge-with-title">
-              <span class="badge-title text-muted">Last Modified</span>
-              <span class="badge-content" id="last-modified-date">Loading...</span>
-            </span>
-          </footer>
-          <script>
-            (function () {
-              const el = document.getElementById("last-modified-date");
-              if (!el) return;
-              const raw = document.lastModified;
-              const date = new Date(raw);
-              if (!raw || isNaN(date.getTime())) {
-                el.textContent = "Unknown";
-                return;
-              }
-              el.textContent = date.toLocaleDateString("en-US", {
-                year: "numeric",
-                month: "short",
-                day: "numeric"
-              });
-            })();
-          </script>
       </div>
     </main>
   </div>
   <aside id="R-sidebar" class="default-animation showVisitedLinks">
   </aside>
-
-## Contents
-
-| 시간        | 인덱스 | 내용                                                                                      | 예상 시간 |
-| ----------- | ------ | ----------------------------------------------------------------------------------------- | --------- |
-| 14:00~14:10 | 0      | [개요 설명 & 실습 환경 접속](./1-0-requirements/1-0-index.html)                           | 10분      |
-| 14:10~14:30 | 1      | [OTel Collector 설치 (**IM**)](./1-1-DeployOpenTelemetryCollector/1-1-index.html)         | 30분      |
-| 14:30~14:50 | 2      | [Pet Clinic JAVA APP 구동시키기](./1-2-DeployJavaAPP/1-2-index.html)                      | 20분      |
-| 14:50~15:20 | 3      | [Java Instrumentation (**APM**)](./1-3-InstrumentJavaAPPwithOpenTelemetry/1-3-index.html) | 30분      |
-| 15:20~15:40 | 9      | [Log collection to Splunk Cloud (**Log**)](./1-9-CollectLogs/1-9-index.html)              | 20분      |
-| 15:40~15:50 | 13     | [Related Content 로 통합 분석하기](./1-13-RelatedContents/1-13-index.html)                | 20분      |
-|             |        | **20 Min Break Time**                                                                     |
-| 16:10~16:20 | 10     | Set Log Observer connector                                                                | 10분      |
-| 16:20~17:00 | 11     | Challenge : MySQL Receiver 추가하기                                                       | 40분      |
 
 <!--
 
