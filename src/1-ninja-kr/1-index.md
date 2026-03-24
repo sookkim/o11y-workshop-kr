@@ -13,14 +13,14 @@
 </br>
 
 <div style="display:grid; grid-template-columns:repeat(2, minmax(220px, 1fr)); gap:20px;">
-            <a href="src/1-ninja-kr/1-index.html" class="card">
+            <a href="src/1-ninja-kr/1-1-monolith/1-1-index.html" class="card">
               <img src="https://splunk.github.io/observability-workshop/en/ninja-workshops/1-automatic-discovery/1-petclinic-monolith/images/petclinic-exercise.png" style="width:600px; height:340px;">
               <div class="card-body">
                 <h3>Monolith Workshop</h3>
                 <p>VM 환경에 Java Springboot 샘플 애플리케이션을 구동하여 Splunk o11y Cloud 의 인프라, APM, Log 를 수집하는 워크샵입니다</p>
               </div>
             </a>
-            <a href="src/2-Splunk4NinjasITSI/1-index.html" class="card">
+            <a href="src/1-ninja-kr/1-2-msa/1-2-index.html" class="card">
               <img src="https://splunk.github.io/observability-workshop/en/ninja-workshops/1-automatic-discovery/2-petclinic-kubernetes/images/auto-instrumentation-java-diagram.png" style="width:600px; height:340px;">
               <div class="card-body">
                 <h3>Microservice (K8S) Workshop</h3>

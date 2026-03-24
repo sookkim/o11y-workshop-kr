@@ -15,89 +15,119 @@ var CONTENTS = [
         menuName: 'Splunk Ninja Workshop for Observability', // required. Side bar text
         href: '/o11y-workshop-kr/src/1-ninja-kr/1-index.html', // required. HTML file path
         prev: '0',
-        next: '1-0',
+        next: '1-1',
         sub: [
           {
             id: '1-1', // required. page ID
-            title: '1-1. Monolith Workshop', // required. Bread crumbs text
-            menuName: '1-1. Monolith Workshop', // required. Side bar text
+            title: 'Monolith Workshop', // required. Bread crumbs text
+            menuName: 'Monolith Workshop', // required. Side bar text
             href: '/o11y-workshop-kr/src/1-ninja-kr/1-1-monolith/1-1-index.html', // required. HTML file path
             prev: '1',
-            next: '1-1',
-            sub: [],
+            next: '1-1-1',
+            sub: [
+              {
+                id: '1-1-1', // required. page ID
+                title: '1. Deploy the OpenTelemetry Collector', // required. Bread crumbs text
+                menuName: '1. Deploy the OpenTelemetry Collector', // required. Side bar text
+                href: '/o11y-workshop-kr/src/1-ninja-kr/1-1-monolith/1-1-1-DeployOpenTelemetryCollector/1-1-1-index.html', // required. HTML file path
+                prev: '1-1',
+                next: '1-1-2',
+                sub: [],
+              },
+              {
+                id: '1-1-2', // required. page ID
+                title: '2. Deploy the Java Application', // required. Bread crumbs text
+                menuName: '2. Deploy the Java Application', // required. Side bar text
+                href: '/o11y-workshop-kr/src/1-ninja-kr/1-1-monolith/1-1-2-DeployJavaAPP/1-1-2-index.html', // required. HTML file path
+                prev: '1-1-1',
+                next: '1-1-3',
+                sub: [],
+              },
+              {
+                id: '1-1-3', // required. page ID
+                title: '3. Instrument a Java Application with OpenTelemetry', // required. Bread crumbs text
+                menuName: '3. Instrument a Java Application with OpenTelemetry', // required. Side bar text
+                href: '/o11y-workshop-kr/src/1-ninja-kr/1-1-monolith/1-3-InstrumentJavaAPPwithOpenTelemetry/1-1-3-index.html', // required. HTML file path
+                prev: '1-1-2',
+                next: '1-1-4',
+                sub: [],
+              },
+              {
+                id: '1-1-4', // required. page ID
+                title: '4. Log collection to Splunk Core platform', // required. Bread crumbs text
+                menuName: '4. Log collection to Splunk Core platform', // required. Side bar text
+                href: '/o11y-workshop-kr/src/1-ninja-kr/1-1-monolith/1-1-4-CollectLogs/1-1-4-index.html', // required. HTML file path
+                prev: '1-1-3',
+                next: '1-1-5',
+                sub: [],
+              },
+              {
+                id: '1-1-5', // required. page ID
+                title: '5. Related Contents', // required. Bread crumbs text
+                menuName: '5. Related Contents', // required. Side bar text
+                href: '/o11y-workshop-kr/src/1-ninja-kr/1-1-monolith/1-5-RelatedContents/1-5-index.html', // required. HTML file path
+                prev: '1-1-4',
+                next: '1-1-6',
+                sub: [],
+              },
+            ],
           },
           {
             id: '1-2', // required. page ID
-            title: '1. Deploy the OpenTelemetry Collector', // required. Bread crumbs text
-            menuName: '1. Deploy the OpenTelemetry Collector', // required. Side bar text
-            href: '/o11y-workshop-kr/src/1-ninja-kr/1-1-DeployOpenTelemetryCollector/1-1-index.html', // required. HTML file path
-            prev: '1-0',
-            next: '1-2',
-            sub: [],
-          },
-          {
-            id: '1-2', // required. page ID
-            title: '2. Deploy the Java Application', // required. Bread crumbs text
-            menuName: '2. Deploy the Java Application', // required. Side bar text
-            href: '/o11y-workshop-kr/src/1-ninja-kr/1-2-DeployJavaAPP/1-2-index.html', // required. HTML file path
-            prev: '1-1',
-            next: '1-3',
-            sub: [],
-          },
-          {
-            id: '1-3', // required. page ID
-            title: '3. Instrument a Java Application with OpenTelemetry', // required. Bread crumbs text
-            menuName: '3. Instrument a Java Application with OpenTelemetry', // required. Side bar text
-            href: '/o11y-workshop-kr/src/1-ninja-kr/1-3-InstrumentJavaAPPwithOpenTelemetry/1-3-index.html', // required. HTML file path
-            prev: '1-2',
-            next: '1-4',
-            sub: [],
-          },
-          {
-            id: '1-4', // required. page ID
-            title: '4. Dockerize the Application', // required. Bread crumbs text
-            menuName: '4. Dockerize the Application', // required. Side bar text
-            href: '/o11y-workshop-kr/src/1-ninja-kr/1-4-DockerizeApp/1-4-index.html', // required. HTML file path
+            title: 'Microservice Workshop', // required. Bread crumbs text
+            menuName: 'Microservice Workshop', // required. Side bar text
+            href: '/o11y-workshop-kr/src/1-ninja-kr/1-2-msa/1-2-1-index.html', // required. HTML file path
             prev: '1-3',
-            next: '1-5',
-            sub: [],
+            next: '1-2-1',
+            sub: [
+              {
+                id: '1-2', // required. page ID
+                title: '4. Dockerize the Application', // required. Bread crumbs text
+                menuName: '4. Dockerize the Application', // required. Side bar text
+                href: '/o11y-workshop-kr/src/1-ninja-kr/1-4-DockerizeApp/1-4-index.html', // required. HTML file path
+                prev: '1-3',
+                next: '1-5',
+                sub: [],
+              },
+              {
+                id: '1-5', // required. page ID
+                title: '5. Add Instrumentation to Dockerfile', // required. Bread crumbs text
+                menuName: '5. Add Instrumentation to Dockerfile', // required. Side bar text
+                href: '/o11y-workshop-kr/src/1-ninja-kr/1-5-AddInstrumentDocker/1-5-index.html', // required. HTML file path
+                prev: '1-4',
+                next: '1-6',
+                sub: [],
+              },
+              {
+                id: '1-6', // required. page ID
+                title: '6. Install Opentelemetry in K8s', // required. Bread crumbs text
+                menuName: '6. Install Opentelemetry in K8s', // required. Side bar text
+                href: '/o11y-workshop-kr/src/1-ninja-kr/1-6-InstallOtelinK8s/1-6-index.html', // required. HTML file path
+                prev: '1-5',
+                next: '1-7',
+                sub: [],
+              },
+              {
+                id: '1-7', // required. page ID
+                title: '7. Deploy app to K8s', // required. Bread crumbs text
+                menuName: '7. Deploy app to K8s', // required. Side bar text
+                href: '/o11y-workshop-kr/src/1-ninja-kr/1-7-DeployAPPtoK8s/1-7-index.html', // required. HTML file path
+                prev: '1-6',
+                next: '1-8',
+                sub: [],
+              },
+              {
+                id: '1-8', // required. page ID
+                title: '8. Zero-Code Instrumentation for K8S Application', // required. Bread crumbs text
+                menuName: '8. Zero-Code Instrumentation for K8S Application', // required. Side bar text
+                href: '/o11y-workshop-kr/src/1-ninja-kr/1-8-ZeroCodeInstrumentation/1-8-index.html', // required. HTML file path
+                prev: '1-7',
+                next: '1-9',
+                sub: [],
+              },
+            ],
           },
-          {
-            id: '1-5', // required. page ID
-            title: '5. Add Instrumentation to Dockerfile', // required. Bread crumbs text
-            menuName: '5. Add Instrumentation to Dockerfile', // required. Side bar text
-            href: '/o11y-workshop-kr/src/1-ninja-kr/1-5-AddInstrumentDocker/1-5-index.html', // required. HTML file path
-            prev: '1-4',
-            next: '1-6',
-            sub: [],
-          },
-          {
-            id: '1-6', // required. page ID
-            title: '6. Install Opentelemetry in K8s', // required. Bread crumbs text
-            menuName: '6. Install Opentelemetry in K8s', // required. Side bar text
-            href: '/o11y-workshop-kr/src/1-ninja-kr/1-6-InstallOtelinK8s/1-6-index.html', // required. HTML file path
-            prev: '1-5',
-            next: '1-7',
-            sub: [],
-          },
-          {
-            id: '1-7', // required. page ID
-            title: '7. Deploy app to K8s', // required. Bread crumbs text
-            menuName: '7. Deploy app to K8s', // required. Side bar text
-            href: '/o11y-workshop-kr/src/1-ninja-kr/1-7-DeployAPPtoK8s/1-7-index.html', // required. HTML file path
-            prev: '1-6',
-            next: '1-8',
-            sub: [],
-          },
-          {
-            id: '1-8', // required. page ID
-            title: '8. Zero-Code Instrumentation for K8S Application', // required. Bread crumbs text
-            menuName: '8. Zero-Code Instrumentation for K8S Application', // required. Side bar text
-            href: '/o11y-workshop-kr/src/1-ninja-kr/1-8-ZeroCodeInstrumentation/1-8-index.html', // required. HTML file path
-            prev: '1-7',
-            next: '1-9',
-            sub: [],
-          },
+
           {
             id: '1-9', // required. page ID
             title: '9. Log collection to Splunk Cloud', // required. Bread crumbs text

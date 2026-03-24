@@ -100,10 +100,10 @@
 1. Splunk Cloud 를 인증하기 위한 토큰을 생성합니다
    - Splunk Cloud 화면에서 **[Settings] > [Data Input]** 메뉴로 이동하여 **[Http Event Collector]** 오른쪽에 있는 **[Add New]** 버튼을 클릭합니다
    - Name : <실습자 이름>\_token
-     <img src="../../images/1-ninja-kr/1-9-token.jpg" width="800" style="border: 1px solid #000; display: block; margin-left: 0;">
+     <img src="../../../images/1-ninja-kr/1-9-token.jpg" width="800" style="border: 1px solid #000; display: block; margin-left: 0;">
    - 모두 Next 를 누르고 생성을 완료합니다
    - 완료 화면에 뜨는 Token Value 를 복사하여 기록 해 둡니다
-     <img src="../../images/1-ninja-kr/1-9-token2.jpg" width="800" style="border: 1px solid #000; display: block; margin-left: 0;">
+     <img src="../../../images/1-ninja-kr/1-9-token2.jpg" width="800" style="border: 1px solid #000; display: block; margin-left: 0;">
 
 </br>
 
@@ -173,7 +173,7 @@
 
    `index=main sourcetype=<실습자이름>`
 
-    <img src="../../images/1-ninja-kr/1-9-logcollection.jpg" width="1200" style="border: 1px solid #000; display: block; margin-left: 0;">
+    <img src="../../../images/1-ninja-kr/1-9-logcollection.jpg" width="1200" style="border: 1px solid #000; display: block; margin-left: 0;">
    - 위 스크린샷 처럼 아랫쪽에 수집되는 로그가 표시된다면 성공입니다
 
 </br>
@@ -217,7 +217,7 @@
   ```
 
 - 이제 다시 Splunk Enterprise 로 가서 로그를 검색 해 봅니다. 여러 줄의 로그가 하나의 로그로 인식되어 처리됐나요?
-  <img src="../../images/1-ninja-kr/1-9-multiline.jpg" width="1200" style="border: 1px solid #000; display: block; margin-left: 0;">
+  <img src="../../../images/1-ninja-kr/1-9-multiline.jpg" width="1200" style="border: 1px solid #000; display: block; margin-left: 0;">
 
 </br>
 

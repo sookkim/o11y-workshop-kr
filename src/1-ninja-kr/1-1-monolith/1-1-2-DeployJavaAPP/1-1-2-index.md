@@ -2,11 +2,11 @@
 
 </br>
 
-<img src="../../images/1-ninja-kr/1-2-apm.jpg" width="1200" style="border: 1px solid #000; display: block; margin-left: 0;">
+<img src="../../../images/1-ninja-kr/1-2-apm.jpg" width="1200" style="border: 1px solid #000; display: block; margin-left: 0;">
 
 </br>
 
-<img src="../../images/1-ninja-kr/1-2-trace.jpg" width="1200" style="border: 1px solid #000; display: block; margin-left: 0;">
+<img src="../../../images/1-ninja-kr/1-2-trace.jpg" width="1200" style="border: 1px solid #000; display: block; margin-left: 0;">
 
 </br>
 
@@ -113,7 +113,7 @@ APM을 설정하기 위해 가장 먼저 필요한 것은 애플리케이션입�
 
    `http://_ip-address_:8083`
 
-   <img src="../../images/1-ninja-kr/1-2-petclinic.jpg" width="1200" style="border: 1px solid #000; display: block; margin-left: 0;">
+   <img src="../../../images/1-ninja-kr/1-2-petclinic.jpg" width="1200" style="border: 1px solid #000; display: block; margin-left: 0;">
 
 </br>
 
@@ -125,7 +125,7 @@ APM을 설정하기 위해 가장 먼저 필요한 것은 애플리케이션입�
 
 ---
 
-**Module 1-2. Deploy a Java Application DONE!**
+**Module 2. Deploy a Java Application DONE!**
 
 <!--
 

@@ -4,11 +4,11 @@
 
 </br>
 
-<img src="../../images/1-ninja-kr/1-1-im.jpg" width="1200" style="border: 1px solid #000; display: block; margin-left: 0;">
+<img src="../../../images/1-ninja-kr/1-1-im.jpg" width="1200" style="border: 1px solid #000; display: block; margin-left: 0;">
 
 </br>
 
-<img src="../../images/1-ninja-kr/1-1-otel.png" width="1200" style="border: 1px solid #000; display: block; margin-left: 0;">
+<img src="../../../images/1-ninja-kr/1-1-otel.png" width="1200" style="border: 1px solid #000; display: block; margin-left: 0;">
 
 </br>
 
@@ -69,7 +69,7 @@
    - Splunk Observability access token : **sookim-INGEST** 선택
    - Mode : **Host monitoring(agent)** 선택
    - Autodiscovery : Zero-code 부분 체크 해제
-     <img src="../../images/1-ninja-kr/1-1-config2.jpg" width="800" style="border: 1px solid #000; display: block; margin-left: 0;">
+     <img src="../../../images/1-ninja-kr/1-1-config2.jpg" width="800" style="border: 1px solid #000; display: block; margin-left: 0;">
    - [Next] 클릭
 
 3. Install Script
@@ -82,7 +82,7 @@
    sudo sh /tmp/splunk-otel-collector.sh --realm <region> -- <access_token> --mode agent --without-instrumentation --discovery
    ```
 
-   <img src="../../images/1-ninja-kr/1-1-config3.jpg" width="800" style="border: 1px solid #000; display: block; margin-left: 0;">
+   <img src="../../../images/1-ninja-kr/1-1-config3.jpg" width="800" style="border: 1px solid #000; display: block; margin-left: 0;">
 
 - 참고 : [Install the Collector for Linux with the installer script](https://docs.splunk.com/observability/en/gdi/opentelemetry/collector-linux/install-linux.html#otel-install-linux)
 
@@ -96,7 +96,7 @@
    systemctl status splunk-otel-collector
    ```
 
-   <img src="../../images/1-ninja-kr/1-1-config4.jpg" width="800" style="border: 1px solid #000; display: block; margin-left: 0;">
+   <img src="../../../images/1-ninja-kr/1-1-config4.jpg" width="800" style="border: 1px solid #000; display: block; margin-left: 0;">
 
 </br>
 
@@ -133,7 +133,7 @@ cd /etc/otel/collector
 ls - al
 ```
 
-<img src="../../images/1-ninja-kr/1-1-config5.jpg" width="800" style="border: 1px solid #000; display: block; margin-left: 0;">
+<img src="../../../images/1-ninja-kr/1-1-config5.jpg" width="800" style="border: 1px solid #000; display: block; margin-left: 0;">
 
 </br>
 
@@ -143,10 +143,10 @@ Splunk Observability Cloud 화면으로 가서 인프라 메트릭이 제대로 
 
 - **[Infrastructure] > [Host Overview] > [Active Hosts(OTel)]** 타일을 눌러 네비게이터로 이동합니다
 - 필터에 Hostname 으로 필터를 설정하여, 내가 실습중인 서버가 보이는지 확인합니다
-  <img src="../../images/1-ninja-kr/1-1-config6.jpg" width="1000" style="border: 1px solid #000; display: block; margin-left: 0;">
+  <img src="../../../images/1-ninja-kr/1-1-config6.jpg" width="1000" style="border: 1px solid #000; display: block; margin-left: 0;">
 
 </br>
 
 ---
 
-**Module 1-1. Deploy the OpenTelemetry Collector DONE!**
+**Module 1. Deploy the OpenTelemetry Collector DONE!**
