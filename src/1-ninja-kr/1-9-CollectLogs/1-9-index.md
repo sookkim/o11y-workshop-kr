@@ -121,8 +121,10 @@
    # splunk-otel-collector.conf
 
    SPLUNK_HEC_URL=https://lguplus-i-098d48b087c692bd3.splunk.show:8088/services/collector/event
-   SPLUNK_HEC_TOKEN=3d8799c9-b8f5-40d0-8e57-2dd797ce447b
+   SPLUNK_HEC_TOKEN=<생성한 토큰 입력>
    ```
+
+   <!--3d8799c9-b8f5-40d0-8e57-2dd797ce447b-->
 
    이제는 어떤 로그를 수집할 것인지에 대한 설정을 진행합니다
 

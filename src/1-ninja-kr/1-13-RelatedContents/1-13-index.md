@@ -28,6 +28,8 @@ Splunk Enterprise UI에서, **[Apps] > [Discover Splunk Observability Cloud]**
 - Preview 를 눌러보면 관련 Host 의 메트릭이 표현됩니다
   <img src="../../images/1-ninja-kr/1-13-relatedcontent2.jpg" width="1200" style="border: 1px solid #000; display: block; margin-left: 0;">
 
+</br>
+
 ## 2. Related Content for APM
 
 연결 된 데이터를 보면 로그가 가지고 있는 정보가 hostname 밖에 없기 때문에 해당 정보로 맵핑을 한다는 것을 알 수 있습니다. 시스템 관리자는 인프라 뿐 아니라 APM 과도 연계분석이 필요할 수 있으므로, APM도 함께 연결 될 수 있도록 설정을 진행 해 보겠습니다.
