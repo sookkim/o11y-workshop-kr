@@ -70,6 +70,24 @@ var CONTENTS = [
                 next: '1-1-6',
                 sub: [],
               },
+              {
+                id: '1-1-6', // required. page ID
+                title: '6. Set Log Observer connector', // required. Bread crumbs text
+                menuName: '6. Set Log Observer connector', // required. Side bar text
+                href: '/o11y-workshop-kr/src/1-ninja-kr/1-1-monolith/1-1-6-LogObserverConnector/1-1-6-index.html', // required. HTML file path
+                prev: '1-1-5',
+                next: '1-1-6',
+                sub: [],
+              },
+              {
+                id: '1-1-7', // required. page ID
+                title: '7. Challenge : Add Receier for advanced metrics', // required. Bread crumbs text
+                menuName: '7. Challenge : Add Receier for advanced metrics', // required. Side bar text
+                href: '/o11y-workshop-kr/src/1-ninja-kr//1-1-monolith/1-1-7-ChallengeReceiver/1-1-7-index.html', // required. HTML file path
+                prev: '1-10',
+                next: '1-12',
+                sub: [],
+              },
             ],
           },
           {

@@ -48,8 +48,8 @@ sudo usermod -aG docker $USER
 | 14:10~14:30 | 1      | [OTel Collector 설치 (**IM**)](./1-1-1-DeployOpenTelemetryCollector/1-1-1-index.html)         | 30분      |
 | 14:30~14:50 | 2      | [Pet Clinic JAVA APP 구동시키기](./1-1-2-DeployJavaAPP/1-1-2-index.html)                      | 20분      |
 | 14:50~15:20 | 3      | [Java Instrumentation (**APM**)](./1-1-3-InstrumentJavaAPPwithOpenTelemetry/1-1-3-index.html) | 30분      |
-| 15:20~15:40 | 9      | [Log collection to Splunk Cloud (**Log**)](./1-1-4-CollectLogs/1-1-4-index.html)              | 20분      |
-| 15:40~15:50 | 13     | [Related Content 로 통합 분석하기](./1-1-5-RelatedContents/1-1-5-index.html)                  | 20분      |
+| 15:20~15:40 | 4      | [Log collection to Splunk Cloud (**Log**)](./1-1-4-CollectLogs/1-1-4-index.html)              | 20분      |
+| 15:40~15:50 | 5      | [Related Content 로 통합 분석하기](./1-1-5-RelatedContents/1-1-5-index.html)                  | 20분      |
 |             |        | **20 Min Break Time**                                                                         |
 | 16:10~16:20 | 10     | Set Log Observer connector                                                                    | 10분      |
 | 16:20~17:00 | 11     | Challenge : MySQL Receiver 추가하기                                                           | 40분      |
@@ -124,4 +124,4 @@ sudo usermod -aG docker $USER
 
 ---
 
-**Module 1-0. Pre-Requisites : 실습 환경 준비하기 DONE!**
+**Module 0. Monolith Workshop : 실습 환경 준비하기 DONE!**
