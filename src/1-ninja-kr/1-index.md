@@ -9,5 +9,6 @@
 본 워크샵은 아래 Splunk Show 를 통해 실습환경을 미리 구성 후 진행하셔야 합니다
 
 - Splunk4Ninjas - Observability
+- Splunk4Rookies
 
 </br>
