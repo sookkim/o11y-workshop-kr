@@ -47,7 +47,7 @@ var CONTENTS = [
                 id: '1-1-3', // required. page ID
                 title: '3. Instrument a Java Application with OpenTelemetry', // required. Bread crumbs text
                 menuName: '3. Instrument a Java Application with OpenTelemetry', // required. Side bar text
-                href: '/o11y-workshop-kr/src/1-ninja-kr/1-1-monolith/1-3-InstrumentJavaAPPwithOpenTelemetry/1-1-3-index.html', // required. HTML file path
+                href: '/o11y-workshop-kr/src/1-ninja-kr/1-1-monolith/1-1-3-InstrumentJavaAPPwithOpenTelemetry/1-1-3-index.html', // required. HTML file path
                 prev: '1-1-2',
                 next: '1-1-4',
                 sub: [],
@@ -65,7 +65,7 @@ var CONTENTS = [
                 id: '1-1-5', // required. page ID
                 title: '5. Related Contents', // required. Bread crumbs text
                 menuName: '5. Related Contents', // required. Side bar text
-                href: '/o11y-workshop-kr/src/1-ninja-kr/1-1-monolith/1-5-RelatedContents/1-5-index.html', // required. HTML file path
+                href: '/o11y-workshop-kr/src/1-ninja-kr/1-1-monolith/1-1-5-RelatedContents/1-5-index.html', // required. HTML file path
                 prev: '1-1-4',
                 next: '1-1-6',
                 sub: [],
