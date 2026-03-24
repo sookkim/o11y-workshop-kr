@@ -18,16 +18,16 @@ var CONTENTS = [
         next: '1-0',
         sub: [
           {
-            id: '1-0', // required. page ID
-            title: '0. Pre-requisites', // required. Bread crumbs text
-            menuName: '0. Pre-requisites', // required. Side bar text
-            href: '/o11y-workshop-kr/src/1-ninja-kr/1-0-requirements/1-0-index.html', // required. HTML file path
+            id: '1-1', // required. page ID
+            title: '1-1. Monolith Workshop', // required. Bread crumbs text
+            menuName: '1-1. Monolith Workshop', // required. Side bar text
+            href: '/o11y-workshop-kr/src/1-ninja-kr/1-1-monolith/1-1-index.html', // required. HTML file path
             prev: '1',
             next: '1-1',
             sub: [],
           },
           {
-            id: '1-1', // required. page ID
+            id: '1-2', // required. page ID
             title: '1. Deploy the OpenTelemetry Collector', // required. Bread crumbs text
             menuName: '1. Deploy the OpenTelemetry Collector', // required. Side bar text
             href: '/o11y-workshop-kr/src/1-ninja-kr/1-1-DeployOpenTelemetryCollector/1-1-index.html', // required. HTML file path
