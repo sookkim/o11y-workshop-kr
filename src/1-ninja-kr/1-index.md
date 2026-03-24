@@ -64,6 +64,23 @@
               font-size: 14px;
             }
           </style>
+          <script>
+            (function () {
+              const el = document.getElementById("last-modified-date");
+              if (!el) return;
+              const raw = document.lastModified;
+              const date = new Date(raw);
+              if (!raw || isNaN(date.getTime())) {
+                el.textContent = "Unknown";
+                return;
+              }
+              el.textContent = date.toLocaleDateString("en-US", {
+                year: "numeric",
+                month: "short",
+                day: "numeric"
+              });
+            })();
+          </script>
       </div>
     </main>
   </div>
