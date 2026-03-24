@@ -116,3 +116,9 @@ plunk Cloud Platform에서 Settings > Users 에서 Log Observer Connect 서비�
 ## 3. Log observer 확인하기
 
 ![](../../images/1-ninja-kr/1-10-configuration7.jpg)
+
+</br>
+
+---
+
+**Module 6. Set Log Observer Connector DONE!**

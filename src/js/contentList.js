@@ -65,7 +65,7 @@ var CONTENTS = [
                 id: '1-1-5', // required. page ID
                 title: '5. Related Contents', // required. Bread crumbs text
                 menuName: '5. Related Contents', // required. Side bar text
-                href: '/o11y-workshop-kr/src/1-ninja-kr/1-1-monolith/1-1-5-RelatedContents/1-5-index.html', // required. HTML file path
+                href: '/o11y-workshop-kr/src/1-ninja-kr/1-1-monolith/1-1-5-RelatedContents/1-1-5-index.html', // required. HTML file path
                 prev: '1-1-4',
                 next: '1-1-6',
                 sub: [],
@@ -83,7 +83,7 @@ var CONTENTS = [
                 id: '1-1-7', // required. page ID
                 title: '7. Challenge : Add Receier for advanced metrics', // required. Bread crumbs text
                 menuName: '7. Challenge : Add Receier for advanced metrics', // required. Side bar text
-                href: '/o11y-workshop-kr/src/1-ninja-kr//1-1-monolith/1-1-7-ChallengeReceiver/1-1-7-index.html', // required. HTML file path
+                href: '/o11y-workshop-kr/src/1-ninja-kr/1-1-monolith/1-1-7-ChallengeReceiver/1-1-7-index.html', // required. HTML file path
                 prev: '1-10',
                 next: '1-12',
                 sub: [],
@@ -99,12 +99,21 @@ var CONTENTS = [
             next: '1-2-1',
             sub: [
               {
-                id: '1-2', // required. page ID
-                title: '4. Dockerize the Application', // required. Bread crumbs text
-                menuName: '4. Dockerize the Application', // required. Side bar text
-                href: '/o11y-workshop-kr/src/1-ninja-kr/1-4-DockerizeApp/1-4-index.html', // required. HTML file path
-                prev: '1-3',
-                next: '1-5',
+                id: '1-2-1', // required. page ID
+                title: '1. Deploy the OpenTelemetry Collector', // required. Bread crumbs text
+                menuName: '1. Deploy the OpenTelemetry Collector', // required. Side bar text
+                href: '/o11y-workshop-kr/src/1-ninja-kr/1-2-msa/1-2-1-DeployOpenTelemetryCollector/1-2-1-index.html', // required. HTML file path
+                prev: '1-2',
+                next: '1-2-2',
+                sub: [],
+              },
+              {
+                id: '1-2-2', // required. page ID
+                title: '2. Dockerize the Application', // required. Bread crumbs text
+                menuName: '2. Dockerize the Application', // required. Side bar text
+                href: '/o11y-workshop-kr/src/1-ninja-kr/1-2-msa/1-2-1-DockerizeApp/1-2-1-index.html', // required. HTML file path
+                prev: '1-2-1',
+                next: '1-2-3',
                 sub: [],
               },
               {

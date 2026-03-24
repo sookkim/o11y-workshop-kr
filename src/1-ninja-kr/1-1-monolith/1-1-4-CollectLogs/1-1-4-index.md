@@ -223,7 +223,7 @@
 
 ---
 
-**Module 1-9. Collect logs to Splunk Cloud DONE!**
+**Module 4. Collect logs to Splunk Cloud DONE!**
 
 <!--
      K8S 환경은 해당내용을 참조하세요
