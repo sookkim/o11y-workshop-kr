@@ -78,7 +78,7 @@ sudo usermod -aG docker $USER
 - SSH 접속 가능한 터미널
 - Observability Cloud 핸즈온 환경 접속 정보 - [링크 클릭](https://cisco.box.com/s/zi4ws67vlkeaqbiw39t7ochkpgnc7q9c)
 - Splunk Observability Cloud - Splunk Korea organization 으로 접속
-- Splunk Cloud 핸즈온 환경 접속 정보 - [링크 클릭](https://cisco.box.com/s/j0l2wwfbiuid0jsw5709cjo0zoke7hvk)
+  <img src="../../images/1-ninja-kr/1-invi.jpg" width="600" style="border: 1px solid #000; display: block; margin-left: 0;">
 
 </br>
 

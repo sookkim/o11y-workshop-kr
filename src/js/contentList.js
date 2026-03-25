@@ -84,8 +84,8 @@ var CONTENTS = [
                 title: '7. Challenge : Add Receier for advanced metrics', // required. Bread crumbs text
                 menuName: '7. Challenge : Add Receier for advanced metrics', // required. Side bar text
                 href: '/o11y-workshop-kr/src/1-ninja-kr/1-1-monolith/1-1-7-ChallengeReceiver/1-1-7-index.html', // required. HTML file path
-                prev: '1-10',
-                next: '1-12',
+                prev: '1-1-6',
+                next: '1-2',
                 sub: [],
               },
             ],

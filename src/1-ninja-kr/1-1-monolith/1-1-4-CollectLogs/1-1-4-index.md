@@ -4,7 +4,7 @@
 
 로그 수집은 Splunk Cloud 또는 Enterprise 로 해야합니다. 기본적으로 O11y Cloud 엔진은 로그를 저장하지 않기 때문에 HEC 엔드포인트를 통해 Splunk 코어 엔진으로 로그를 보내도록 설정합니다.
 
-본 워크샵에서는 핸즈온을 해보실 수 있는 Splunk Enterprise 를 제공드리며, 해당 스플렁크 엔진으로 Linux 환경에서 발생하는 로그를 어떻게 보낼 수 있을지에 대한 설정과 Splunk Enterprise에 접속하여 확인까지 진행합니다
+본 워크샵에서는 핸즈온을 해보실 수 있는 Splunk Cloud 를 제공드리며, 해당 스플렁크 엔진으로 Linux 환경에서 발생하는 로그를 어떻게 보낼 수 있을지에 대한 설정과 Splunk Cloud에 접속하여 확인까지 진행합니다
 
 </br>
 
@@ -83,7 +83,7 @@
    cat petclinic.log
    ```
 
-   <img src="../../images/1-ninja-kr/1-9-logging.jpg" width="1200" style="border: 1px solid #000; display: block; margin-left: 0;">
+   <img src="../../../images/1-ninja-kr/1-9-logging.jpg" width="1200" style="border: 1px solid #000; display: block; margin-left: 0;">
 
 </br>
 
@@ -93,9 +93,9 @@
 
 ## 2. Collect file logs in Splunk Cloud
 
-로그 수집을 위한 플랫폼은 [Splunk Enterprise 핸즈온 환경 접속 정보](https://cisco.box.com/s/j0l2wwfbiuid0jsw5709cjo0zoke7hvk) 파일에서 확인 할 수 있습니다.
+로그 수집을 위한 플랫폼은 [Observability Cloud 핸즈온 환경 접속 정보](https://cisco.box.com/s/zi4ws67vlkeaqbiw39t7ochkpgnc7q9c) 파일에서 확인 할 수 있습니다.
 
-실습을 위해서는 하나의 플랫폼만 이용하면 되므로, 최상단에 표시된 접속 정보를 참조 하도록 합니다.
+실습을 위해서는 하나의 플랫폼만 이용하면 되므로, 왼쪽 칼럼에 Splunk Cloud URL과 admin, Password 정보를 참조 하도록 합니다.
 
 1. Splunk Cloud 를 인증하기 위한 토큰을 생성합니다
    - Splunk Cloud 화면에서 **[Settings] > [Data Input]** 메뉴로 이동하여 **[Http Event Collector]** 오른쪽에 있는 **[Add New]** 버튼을 클릭합니다
@@ -120,7 +120,7 @@
    ```bash
    # splunk-otel-collector.conf
 
-   SPLUNK_HEC_URL=https://lguplus-i-098d48b087c692bd3.splunk.show:8088/services/collector/event
+   SPLUNK_HEC_URL=https://http-inputs-sookyung-test.stg.splunkcloud.com/services/collector/event
    SPLUNK_HEC_TOKEN=<생성한 토큰 입력>
    ```
 
@@ -167,7 +167,7 @@
 
    </br>
 
-4. Splunk Enterprise 로 가서 로그가 제대로 수집되는지 확인하세요
+4. Splunk Cloud 로 가서 로그가 제대로 수집되는지 확인하세요
    - **[Apps] > [Search & Reporting]** 메뉴로 이동합니다
    - 검색창에 아래와 같이 입력하여 내가 설정한 로그가 수집되는지 확인합니다
 
@@ -216,7 +216,7 @@
   systemctl status splunk-otel-collector
   ```
 
-- 이제 다시 Splunk Enterprise 로 가서 로그를 검색 해 봅니다. 여러 줄의 로그가 하나의 로그로 인식되어 처리됐나요?
+- 이제 다시 Splunk Cloud 로 가서 로그를 검색 해 봅니다. 여러 줄의 로그가 하나의 로그로 인식되어 처리됐나요?
   <img src="../../../images/1-ninja-kr/1-9-multiline.jpg" width="1200" style="border: 1px solid #000; display: block; margin-left: 0;">
 
 </br>
@@ -228,7 +228,7 @@
 <!--
      K8S 환경은 해당내용을 참조하세요
 
-로그 수집은 Splunk Cloud 또는 Enterprise 로 해야합니다. 기본적으로 O11y Cloud 엔진은 로그를 저장하지 않기 때문에 HEC 엔드포인트를 통해 Splunk 코어 엔진으로 로그를 보내도록 설정합니다.
+로그 수집은 Splunk Cloud 또는 Cloud 로 해야합니다. 기본적으로 O11y Cloud 엔진은 로그를 저장하지 않기 때문에 HEC 엔드포인트를 통해 Splunk 코어 엔진으로 로그를 보내도록 설정합니다.
 
 본 워크샵에서는 Splunk Cloud 를 제공드리며, 해당 스플렁크 엔진으로 K8S 파드에서 발생하는 StdOut 로그를 어떻게 보낼 수 있을지에 대한 설정과 Splunk Cloud에 접속하여 확인까지 진행합니다
 
