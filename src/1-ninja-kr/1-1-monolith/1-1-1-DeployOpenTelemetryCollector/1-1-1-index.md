@@ -77,9 +77,11 @@
    화면에 표시된 인스톨 스크립트를 복사하여 SSH 터미널에 붙여넣기 합니다. 에이전트 구동에 필요한 패키지를 일괄 다운로드 및 설치하므로 시간이 조금 소요됩니다.
 
    ```bash
-   curl -sSL https://dl.signalfx.com/splunk-otel-collector.sh > /tmp/splunk-otel-collector.sh && \
+   curl -sSL https://dl.observability.splunkcloud.com/splunk-otel-collector.sh > /tmp/splunk-otel-collector.sh && \
 
-   sudo sh /tmp/splunk-otel-collector.sh --realm <region> -- <access_token> --mode agent --without-instrumentation --discovery
+   sudo sh /tmp/splunk-otel-collector.sh --with-instrumentation --deployment-environment <실습자_이름>-handson \
+   --realm us1 -- 9ZCVR5bpuPczHhsDG0Aruw \
+   --enable-profiler --enable-profiler-memory --enable-metrics
    ```
 
    <img src="../../../images/1-ninja-kr/1-1-config3.jpg" width="800" style="border: 1px solid #000; display: block; margin-left: 0;">

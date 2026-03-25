@@ -68,11 +68,7 @@
 4. 애플리케이션을 재기동 합니다
 
    ```bash
-   java -javaagent:./splunk-otel-javaagent.jar \
-   -Dserver.port=8083 \
-   -Dsplunk.profiler.enabled=true \
-   -Dsplunk.profiler.memory.enabled=true \
-   -jar target/spring-petclinic-*.jar --spring.profiles.active=mysql
+   java -Dserver.port=8083 -jar target/spring-petclinic-*.jar --spring.profiles.active=mysql
    ```
 
 5. 로그 디렉토리 및 로그파일이 생성되었나요? 확인 해 봅시다
@@ -124,7 +120,7 @@
    SPLUNK_HEC_TOKEN=<생성한 토큰 입력>
    ```
 
-   <!--3d8799c9-b8f5-40d0-8e57-2dd797ce447b-->
+   <!--63B7EDB7-0784-484E-9668-2D398F967906-->
 
    이제는 어떤 로그를 수집할 것인지에 대한 설정을 진행합니다
 
