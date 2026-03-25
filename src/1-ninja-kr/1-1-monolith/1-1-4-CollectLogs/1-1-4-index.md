@@ -87,6 +87,8 @@
 
 </br>
 
+<!--
+
 ## 2. Collect file logs in Splunk Cloud
 
 로그 수집을 위한 플랫폼은 [Observability Cloud 핸즈온 환경 접속 정보](https://cisco.box.com/s/zi4ws67vlkeaqbiw39t7ochkpgnc7q9c) 파일에서 확인 할 수 있습니다.
@@ -117,6 +119,71 @@
    # splunk-otel-collector.conf
 
    SPLUNK_HEC_URL=https://http-inputs-sookyung-test.stg.splunkcloud.com/services/collector/event
+   SPLUNK_HEC_TOKEN=<생성한 토큰 입력>
+   ```
+
+   이제는 어떤 로그를 수집할 것인지에 대한 설정을 진행합니다
+
+   ```bash
+   sudo vi agent_config.yaml
+   ```
+
+   아래와 같이 로그 파일 경로와 내보내기 옵션을 수정 후 저장합니다
+
+   ```bash
+   # agent_config.yaml
+
+   receivers:
+    filelog:
+      include:
+        - /home/splunk/spring-petclinic/logs/petclinic.log  # 반드시 절대 경로를 적어주세요
+      start_at: beginning
+      include_file_path: true
+      include_file_name: true
+
+   exporters:
+    splunk_hec:
+      sourcetype: "sookyung" #로그 식별을 위해 실습자 본인의 이름을 적어주세요
+
+   service:
+    pipelines:
+      logs:
+        receivers: [filelog] #기존 내용에 filelog 만 추가로 적어주세요
+   ```
+
+</br>
+-->
+
+## 2. Collect file logs in Splunk Enterprise
+
+로그 수집을 위한 플랫폼은 [Observability Enterprise 핸즈온 환경 접속 정보](https://cisco.box.com/s/zi4ws67vlkeaqbiw39t7ochkpgnc7q9c) 파일에서 확인 할 수 있습니다.
+
+실습을 위해서는 하나의 플랫폼만 이용하면 되므로, 왼쪽 칼럼에 Splunk Cloud URL과 admin, Password 정보를 참조 하도록 합니다.
+
+1. Splunk Cloud 를 인증하기 위한 토큰을 생성합니다
+   - Splunk Cloud 화면에서 **[Settings] > [Data Input]** 메뉴로 이동하여 **[Http Event Collector]** 오른쪽에 있는 **[Add New]** 버튼을 클릭합니다
+   - Name : <실습자 이름>\_token
+     <img src="../../../images/1-ninja-kr/1-9-token.jpg" width="800" style="border: 1px solid #000; display: block; margin-left: 0;">
+   - 모두 Next 를 누르고 생성을 완료합니다
+   - 완료 화면에 뜨는 Token Value 를 복사하여 기록 해 둡니다
+     <img src="../../../images/1-ninja-kr/1-9-token2.jpg" width="800" style="border: 1px solid #000; display: block; margin-left: 0;">
+
+</br>
+
+2. Splunk o11y cloud 설정파일에서 로그를 전송 할 수 있도록 configuration을 수정합니다. 리눅스 환경으로 다시 돌아가서 설정파일 경로로 이동합니다
+
+   ```bash
+   cd /etc/otel/collector
+
+   sudo vi splunk-otel-collector.conf
+   ```
+
+   아래와 같이 인증 정보 설정 부분을 수정 후 저장합니다
+
+   ```bash
+   # splunk-otel-collector.conf
+
+   SPLUNK_HEC_URL=http://52.20.236.243:8088/services/collector/event
    SPLUNK_HEC_TOKEN=<생성한 토큰 입력>
    ```
 
@@ -151,9 +218,7 @@
         receivers: [filelog] #기존 내용에 filelog 만 추가로 적어주세요
    ```
 
-</br>
-
-3. 설정을 완료했다면 에이전트를 재시작합니다
+1. 설정을 완료했다면 에이전트를 재시작합니다
 
    ```bash
    sudo systemctl restart splunk-otel-collector
@@ -163,7 +228,7 @@
 
    </br>
 
-4. Splunk Cloud 로 가서 로그가 제대로 수집되는지 확인하세요
+1. Splunk Cloud 로 가서 로그가 제대로 수집되는지 확인하세요
    - **[Apps] > [Search & Reporting]** 메뉴로 이동합니다
    - 검색창에 아래와 같이 입력하여 내가 설정한 로그가 수집되는지 확인합니다
 

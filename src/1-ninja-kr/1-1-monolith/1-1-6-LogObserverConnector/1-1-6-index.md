@@ -114,6 +114,7 @@ Splunk Cloud Platform에서 **[Settings] > [Users]** 에서 Log Observer Connect
 - Password : 방금 설정한 유저의 패스워드를 기입합니다
 - Splunk platform URL : https://sookyung-test.stg.splunkcloud.com:8089
 - Connection Name : 구분 할 수 있도록 본인의 이름으로 지정합니다
+- Certificate : upload certificate 선택 후 [링크](https://cisco.box.com/s/apb0ml9uf90ds0w326wztn1hu4a8c6tq) 에서 인증서를 다운로드 받아 업로드 합니다
   <img src="../../../images/1-ninja-kr/1-10-configuration6.jpg" width="1200" style="border: 1px solid #000; display: block; margin-left: 0;">
 
 - 해당 로그 확인을 본인만 할 수 있도록 권한을 수정합니다.
