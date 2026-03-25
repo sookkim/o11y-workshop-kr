@@ -117,97 +117,87 @@ var CONTENTS = [
                 sub: [],
               },
               {
-                id: '1-5', // required. page ID
-                title: '5. Add Instrumentation to Dockerfile', // required. Bread crumbs text
+                id: '1-2-3', // required. page ID
+                title: '3. Add Instrumentation to Dockerfile', // required. Bread crumbs text
                 menuName: '5. Add Instrumentation to Dockerfile', // required. Side bar text
-                href: '/o11y-workshop-kr/src/1-ninja-kr/1-5-AddInstrumentDocker/1-5-index.html', // required. HTML file path
-                prev: '1-4',
-                next: '1-6',
+                href: '/o11y-workshop-kr/src/1-ninja-kr/1-2-msa/1-2-3-AddInstrumentDocker/1-2-3-index.html', // required. HTML file path
+                prev: '1-2-2',
+                next: '1-2-4',
                 sub: [],
               },
               {
-                id: '1-6', // required. page ID
-                title: '6. Install Opentelemetry in K8s', // required. Bread crumbs text
-                menuName: '6. Install Opentelemetry in K8s', // required. Side bar text
-                href: '/o11y-workshop-kr/src/1-ninja-kr/1-6-InstallOtelinK8s/1-6-index.html', // required. HTML file path
-                prev: '1-5',
-                next: '1-7',
+                id: '1-2-4', // required. page ID
+                title: '4. Install Opentelemetry in K8s', // required. Bread crumbs text
+                menuName: '4. Install Opentelemetry in K8s', // required. Side bar text
+                href: '/o11y-workshop-kr/src/1-ninja-kr/1-2-msa/1-2-4-InstallOtelinK8s/1-2-4-index.html', // required. HTML file path
+                prev: '1-2-3',
+                next: '1-2-5',
                 sub: [],
               },
               {
-                id: '1-7', // required. page ID
-                title: '7. Deploy app to K8s', // required. Bread crumbs text
-                menuName: '7. Deploy app to K8s', // required. Side bar text
-                href: '/o11y-workshop-kr/src/1-ninja-kr/1-7-DeployAPPtoK8s/1-7-index.html', // required. HTML file path
-                prev: '1-6',
-                next: '1-8',
+                id: '1-2-5', // required. page ID
+                title: '5. Zero Code Instrumentation', // required. Bread crumbs text
+                menuName: '5. Zero Code Instrumentation', // required. Side bar text
+                href: '/o11y-workshop-kr/src/1-ninja-kr/1-2-msa/1-2-5-DeployAPPtoK8s/1-2-5-index.html', // required. HTML file path
+                prev: '1-2-4',
+                next: '1-2-6',
                 sub: [],
               },
               {
-                id: '1-8', // required. page ID
-                title: '8. Zero-Code Instrumentation for K8S Application', // required. Bread crumbs text
-                menuName: '8. Zero-Code Instrumentation for K8S Application', // required. Side bar text
-                href: '/o11y-workshop-kr/src/1-ninja-kr/1-8-ZeroCodeInstrumentation/1-8-index.html', // required. HTML file path
-                prev: '1-7',
-                next: '1-9',
+                id: '1-2-6', // required. page ID
+                title: '6. Log collection to Splunk Cloud', // required. Bread crumbs text
+                menuName: '6. Log collection to Splunk Cloud', // required. Side bar text
+                href: '/o11y-workshop-kr/src/1-ninja-kr/1-2-msa/1-2-6-CollectLogs/1-2-6-index.html', // required. HTML file path
+                prev: '1-2-5',
+                next: '1-2-7',
+                sub: [],
+              },
+              {
+                id: '1-2-7', // required. page ID
+                title: '7. Related Contents', // required. Bread crumbs text
+                menuName: '7. Related Contents', // required. Side bar text
+                href: '/o11y-workshop-kr/src/1-ninja-kr/1-2-msa/1-2-7-RelatedContents/1-2-7-index.html', // required. HTML file path
+                prev: '1-2-6',
+                next: '1-2-8',
+                sub: [],
+              },
+              {
+                id: '1-2-8', // required. page ID
+                title: '8. Set Log Observer connector', // required. Bread crumbs text
+                menuName: '8. Set Log Observer connector', // required. Side bar text
+                href: '/o11y-workshop-kr/src/1-ninja-kr/1-2-msa/1-2-8-LogObserverConnector/1-2-8-index.html', // required. HTML file path
+                prev: '1-2-7',
+                next: '1-2-9',
+                sub: [],
+              },
+              {
+                id: '1-2-9', // required. page ID
+                title: '9. Challenge : Add Receier for advanced metrics', // required. Bread crumbs text
+                menuName: '9. Challenge : Add Receier for advanced metrics', // required. Side bar text
+                href: '/o11y-workshop-kr/src/1-ninja-kr/1-2-msa/1-2-9-ChallengeReceiver/1-2-9-index.html', // required. HTML file path
+                prev: '1-2-8',
+                next: '1-2-10',
+                sub: [],
+              },
+              {
+                id: '1-2-10', // required. page ID
+                title: '10. Collect Metrics, Traces, Logs to Splunk Platform', // required. Bread crumbs text
+                menuName: '10. Collect Metrics, Traces, Logs to Splunk Platform', // required. Side bar text
+                href: '/o11y-workshop-kr/src/1-ninja-kr/1-2-msa/1-2-10-CollectMetricsToSplunk/1-2-10-index.html', // required. HTML file path
+                prev: '1-2-9',
+                next: '1-2-11',
+                sub: [],
+              },
+              {
+                id: '1-2-11', // required. page ID
+                title: '11. SIM Command', // required. Bread crumbs text
+                menuName: '11. SIM Command', // required. Side bar text
+                href: '/o11y-workshop-kr/src/1-ninja-kr/1-2-msa/1-2-11-SIMCommand/1-2-11-index.html', // required. HTML file path
+                prev: '1-12',
+                next: '2',
                 sub: [],
               },
             ],
-          },
-
-          {
-            id: '1-9', // required. page ID
-            title: '9. Log collection to Splunk Cloud', // required. Bread crumbs text
-            menuName: '9. Log collection to Splunk Cloud', // required. Side bar text
-            href: '/o11y-workshop-kr/src/1-ninja-kr/1-9-CollectLogs/1-9-index.html', // required. HTML file path
-            prev: '1-8',
-            next: '1-10',
-            sub: [],
-          },
-          {
-            id: '1-10', // required. page ID
-            title: '10. Set Log Observer connector', // required. Bread crumbs text
-            menuName: '10. Set Log Observer connector', // required. Side bar text
-            href: '/o11y-workshop-kr/src/1-ninja-kr/1-10-LogObserverConnector/1-10-index.html', // required. HTML file path
-            prev: '1-9',
-            next: '1-11',
-            sub: [],
-          },
-          {
-            id: '1-11', // required. page ID
-            title: '11. Challenge : Add Receier for advanced metrics', // required. Bread crumbs text
-            menuName: '11. Challenge : Add Receier for advanced metrics', // required. Side bar text
-            href: '/o11y-workshop-kr/src/1-ninja-kr/1-11-ChallengeReceiver/1-11-index.html', // required. HTML file path
-            prev: '1-10',
-            next: '1-12',
-            sub: [],
-          },
-          {
-            id: '1-12', // required. page ID
-            title: '12. Collect Metrics, Traces, Logs to Splunk Platform', // required. Bread crumbs text
-            menuName: '12. Collect Metrics, Traces, Logs to Splunk Platform', // required. Side bar text
-            href: '/o11y-workshop-kr/src/1-ninja-kr/1-12-CollectMetricsToSplunk/1-12-index.html', // required. HTML file path
-            prev: '1-11',
-            next: '1-13',
-            sub: [],
-          },
-          {
-            id: '1-13', // required. page ID
-            title: '13. Related Contents', // required. Bread crumbs text
-            menuName: '13. Related Contents', // required. Side bar text
-            href: '/o11y-workshop-kr/src/1-ninja-kr/1-13-RelatedContents/1-13-index.html', // required. HTML file path
-            prev: '1-12',
-            next: '1-14',
-            sub: [],
-          },
-          {
-            id: '1-14', // required. page ID
-            title: '14. SIM Command', // required. Bread crumbs text
-            menuName: '14. SIM Command', // required. Side bar text
-            href: '/o11y-workshop-kr/src/1-ninja-kr/1-14-SIMCommand/1-14-index.html', // required. HTML file path
-            prev: '1-12',
-            next: '2',
-            sub: [],
           },
         ],
       },

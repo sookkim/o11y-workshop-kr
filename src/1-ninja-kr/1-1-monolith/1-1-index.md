@@ -51,8 +51,8 @@ sudo usermod -aG docker $USER
 | 15:20~15:40 | 4      | [Log collection to Splunk Cloud (**Log**)](./1-1-4-CollectLogs/1-1-4-index.html)              | 20분      |
 | 15:40~15:50 | 5      | [Related Content 로 통합 분석하기](./1-1-5-RelatedContents/1-1-5-index.html)                  | 20분      |
 |             |        | **20 Min Break Time**                                                                         |
-| 16:10~16:20 | 10     | Set Log Observer connector                                                                    | 10분      |
-| 16:20~17:00 | 11     | Challenge : MySQL Receiver 추가하기                                                           | 40분      |
+| 16:10~16:20 | 10     | [Set Log Observer connector](./1-1-6-LogObserverConnector/1-1-6-index.html)                   | 10분      |
+| 16:20~17:00 | 11     | [Challenge : MySQL Receiver 추가하기](./1-1-7-ChallengeReceiver/1-1-7-index.html)             | 40분      |
 
 </br>
 
