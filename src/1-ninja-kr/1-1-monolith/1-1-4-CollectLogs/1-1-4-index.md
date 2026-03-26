@@ -116,7 +116,7 @@
    ```bash
    # splunk-otel-collector.conf
 
-   SPLUNK_HEC_URL=https://http-inputs-sookyung-test.stg.splunkcloud.com/services/collector/event
+   SPLUNK_HEC_URL=https://http-inputs-lguplus.stg.splunkcloud.com/services/collector/event
    SPLUNK_HEC_TOKEN=<생성한 토큰 입력>
    ```
 

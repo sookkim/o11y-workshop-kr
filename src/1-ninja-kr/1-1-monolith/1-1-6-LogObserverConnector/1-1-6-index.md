@@ -112,7 +112,7 @@ Splunk Cloud Platform에서 **[Settings] > [Users]** 에서 Log Observer Connect
 
 - Service account username : 방금 만든 유저이름을 지정합니다 (loc-user-<실습자이름>)
 - Password : 방금 설정한 유저의 패스워드를 기입합니다
-- Splunk platform URL : https://sookyung-test.stg.splunkcloud.com:8089
+- Splunk platform URL : https://lguplus.stg.splunkcloud.com:8089
 - Connection Name : 구분 할 수 있도록 본인의 이름으로 지정합니다
 <!--
 - Certificate : upload certificate 선택 후 [링크](https://cisco.box.com/s/apb0ml9uf90ds0w326wztn1hu4a8c6tq) 에서 인증서를 다운로드 받아 업로드 합니다
