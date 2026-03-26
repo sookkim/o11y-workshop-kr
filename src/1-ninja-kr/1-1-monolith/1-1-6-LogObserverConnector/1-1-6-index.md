@@ -105,8 +105,8 @@ Splunk Cloud Platform에서 **[Settings] > [Users]** 에서 Log Observer Connect
 ## 2. O11y 에서 Log observer Connector 연결하기
 
 - O11y Cloud 에서 **[Logs] > [Logs Connectoions]**메뉴로 들어가서 **[Add New Connection]** 버튼을 클릭합니다
-- Splunk Enterprise Platform 선택
-- [Next] 를 눌러 Splunk Enterprise 에서의 작업 안내를 스킵합니다
+- Splunk Cloud Platform 선택
+- [Next] 를 눌러 Splunk Cloud 에서의 작업 안내를 스킵합니다
 
   <img src="../../../images/1-ninja-kr/1-10-configuration5.jpg" width="1000" style="border: 1px solid #000; display: block; margin-left: 0;">
 
@@ -114,7 +114,9 @@ Splunk Cloud Platform에서 **[Settings] > [Users]** 에서 Log Observer Connect
 - Password : 방금 설정한 유저의 패스워드를 기입합니다
 - Splunk platform URL : https://sookyung-test.stg.splunkcloud.com:8089
 - Connection Name : 구분 할 수 있도록 본인의 이름으로 지정합니다
+<!--
 - Certificate : upload certificate 선택 후 [링크](https://cisco.box.com/s/apb0ml9uf90ds0w326wztn1hu4a8c6tq) 에서 인증서를 다운로드 받아 업로드 합니다
+  -->
   <img src="../../../images/1-ninja-kr/1-10-configuration6.jpg" width="1200" style="border: 1px solid #000; display: block; margin-left: 0;">
 
 - 해당 로그 확인을 본인만 할 수 있도록 권한을 수정합니다.

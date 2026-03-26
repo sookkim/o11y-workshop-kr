@@ -87,8 +87,6 @@
 
 </br>
 
-<!--
-
 ## 2. Collect file logs in Splunk Cloud
 
 로그 수집을 위한 플랫폼은 [Observability Cloud 핸즈온 환경 접속 정보](https://cisco.box.com/s/zi4ws67vlkeaqbiw39t7ochkpgnc7q9c) 파일에서 확인 할 수 있습니다.
@@ -152,7 +150,8 @@
    ```
 
 </br>
--->
+
+<!--
 
 ## 2. Collect file logs in Splunk Enterprise
 
@@ -187,8 +186,6 @@
    SPLUNK_HEC_TOKEN=<생성한 토큰 입력>
    ```
 
-   <!--63B7EDB7-0784-484E-9668-2D398F967906-->
-
    이제는 어떤 로그를 수집할 것인지에 대한 설정을 진행합니다
 
    ```bash
@@ -218,7 +215,9 @@
         receivers: [filelog] #기존 내용에 filelog 만 추가로 적어주세요
    ```
 
-1. 설정을 완료했다면 에이전트를 재시작합니다
+   -->
+
+3. 설정을 완료했다면 에이전트를 재시작합니다
 
    ```bash
    sudo systemctl restart splunk-otel-collector
@@ -228,7 +227,7 @@
 
    </br>
 
-1. Splunk Cloud 로 가서 로그가 제대로 수집되는지 확인하세요
+4. Splunk Cloud 로 가서 로그가 제대로 수집되는지 확인하세요
    - **[Apps] > [Search & Reporting]** 메뉴로 이동합니다
    - 검색창에 아래와 같이 입력하여 내가 설정한 로그가 수집되는지 확인합니다
 
