@@ -109,18 +109,18 @@ var CONTENTS = [
               },
               {
                 id: '1-2-2', // required. page ID
-                title: '2. Dockerize the Application', // required. Bread crumbs text
-                menuName: '2. Dockerize the Application', // required. Side bar text
-                href: '/o11y-workshop-kr/src/1-ninja-kr/1-2-msa/1-2-1-DockerizeApp/1-2-1-index.html', // required. HTML file path
+                title: '2. Deploy the Java Application', // required. Bread crumbs text
+                menuName: '2. Deploy the Java Application', // required. Side bar text
+                href: '/o11y-workshop-kr/src/1-ninja-kr/1-2-msa/1-2-1-DeployJavaAPP/1-2-1-index.html', // required. HTML file path
                 prev: '1-2-1',
                 next: '1-2-3',
                 sub: [],
               },
               {
                 id: '1-2-3', // required. page ID
-                title: '3. Add Instrumentation to Dockerfile', // required. Bread crumbs text
-                menuName: '5. Add Instrumentation to Dockerfile', // required. Side bar text
-                href: '/o11y-workshop-kr/src/1-ninja-kr/1-2-msa/1-2-3-AddInstrumentDocker/1-2-3-index.html', // required. HTML file path
+                title: '3. Instrument a Java Application with OpenTelemetry', // required. Bread crumbs text
+                menuName: '3. Instrument a Java Application with OpenTelemetry', // required. Side bar text
+                href: '/o11y-workshop-kr/src/1-ninja-kr/1-2-msa/1-2-3-InstrumentJavaApp/1-2-3-index.html', // required. HTML file path
                 prev: '1-2-2',
                 next: '1-2-4',
                 sub: [],

@@ -84,7 +84,7 @@
 
    <img src="../../../images/1-ninja-kr/1-2-1-helm.jpg" width="1000" style="border: 1px solid #000; display: block; margin-left: 0;">
 
-- 참고 : [Install the Collector for Linux with the installer script](https://docs.splunk.com/observability/en/gdi/opentelemetry/collector-linux/install-linux.html#otel-install-linux)
+- 참고 : [Install the Collector for Kubernetes using Helm](https://help.splunk.com/en/splunk-observability-cloud/manage-data/splunk-distribution-of-the-opentelemetry-collector/get-started-with-the-splunk-distribution-of-the-opentelemetry-collector/collector-for-kubernetes/install-with-helm)
 
 </br>
 
