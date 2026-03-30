@@ -118,8 +118,8 @@ var CONTENTS = [
               },
               {
                 id: '1-2-3', // required. page ID
-                title: '3. Instrument a Java Application with OpenTelemetry', // required. Bread crumbs text
-                menuName: '3. Instrument a Java Application with OpenTelemetry', // required. Side bar text
+                title: '3. Instrument a Java Application', // required. Bread crumbs text
+                menuName: '3. Instrument a Java Application', // required. Side bar text
                 href: '/o11y-workshop-kr/src/1-ninja-kr/1-2-msa/1-2-3-InstrumentJavaAPP/1-2-3-index.html', // required. HTML file path
                 prev: '1-2-2',
                 next: '1-2-4',

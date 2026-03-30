@@ -147,5 +147,3 @@ Splunk Observability Cloud 화면으로 가서 인프라 메트릭이 제대로 
 ---
 
 **Module 1. Deploy the OpenTelemetry Collector DONE!**
-
-kubectl patch deployment <my-deployment> -n <my-namespace> -p '{"spec":{"template":{"metadata":{"annotations":{"instrumentation.opentelemetry.io/inject-java":"default/splunk-otel-collector"}}}}}'
