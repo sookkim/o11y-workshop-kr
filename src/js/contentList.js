@@ -94,8 +94,8 @@ var CONTENTS = [
             id: '1-2', // required. page ID
             title: 'Microservice Workshop', // required. Bread crumbs text
             menuName: 'Microservice Workshop', // required. Side bar text
-            href: '/o11y-workshop-kr/src/1-ninja-kr/1-2-msa/1-2-1-index.html', // required. HTML file path
-            prev: '1-3',
+            href: '/o11y-workshop-kr/src/1-ninja-kr/1-2-msa/1-2-index.html', // required. HTML file path
+            prev: '1-1-7',
             next: '1-2-1',
             sub: [
               {
@@ -428,6 +428,14 @@ var CONTENTS = [
         menuName: 'Real User Monitoring', // required. Side bar text
         href: '/o11y-workshop-kr/src/4-realUserMonitoring/4-index.html', // required. HTML file path
         prev: '3-8',
+        next: '4-1',
+      },
+      {
+        id: '9', // required. page ID
+        title: 'Splunk Rookies Workshop for Observability', // required. Bread crumbs text
+        menuName: 'Splunk Rookies Workshop for Observability', // required. Side bar text
+        href: '/o11y-workshop-kr/src/4-realUserMonitoring/4-index.html', // required. HTML file path
+        prev: '9-8',
         next: '4-1',
       },
     ],
