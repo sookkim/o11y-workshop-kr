@@ -127,9 +127,9 @@ var CONTENTS = [
               },
               {
                 id: '1-2-4', // required. page ID
-                title: '4. Install Opentelemetry in K8s', // required. Bread crumbs text
-                menuName: '4. Install Opentelemetry in K8s', // required. Side bar text
-                href: '/o11y-workshop-kr/src/1-ninja-kr/1-2-msa/1-2-4-InstallOtelinK8s/1-2-4-index.html', // required. HTML file path
+                title: '4. Log Collection to Splunk Core', // required. Bread crumbs text
+                menuName: '4. Log Collection to Splunk Core', // required. Side bar text
+                href: '/o11y-workshop-kr/src/1-ninja-kr/1-2-msa/1-2-4-CollectLogs/1-2-4-index.html', // required. HTML file path
                 prev: '1-2-3',
                 next: '1-2-5',
                 sub: [],
