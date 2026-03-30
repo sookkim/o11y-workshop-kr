@@ -4,17 +4,22 @@
 
 ## Contents
 
-| 시간        | 인덱스 | 내용                                                                                          | 예상 시간 |
-| ----------- | ------ | --------------------------------------------------------------------------------------------- | --------- |
-| 14:00~14:10 | 0      | [개요 설명 & 실습 환경 접속](./1-1-index.html)                                                | 10분      |
-| 14:10~14:30 | 1      | [OTel Collector 설치 (**IM**)](./1-1-1-DeployOpenTelemetryCollector/1-1-1-index.html)         | 30분      |
-| 14:30~14:50 | 2      | [Pet Clinic JAVA APP 구동시키기](./1-1-2-DeployJavaAPP/1-1-2-index.html)                      | 20분      |
-| 14:50~15:20 | 3      | [Java Instrumentation (**APM**)](./1-1-3-InstrumentJavaAPPwithOpenTelemetry/1-1-3-index.html) | 30분      |
-| 15:20~15:40 | 4      | [Log collection to Splunk Cloud (**Log**)](./1-1-4-CollectLogs/1-1-4-index.html)              | 20분      |
-| 15:40~15:50 | 5      | [Related Content 로 통합 분석하기](./1-1-5-RelatedContents/1-1-5-index.html)                  | 20분      |
-|             |        | **20 Min Break Time**                                                                         |
-| 16:10~16:20 | 10     | [Set Log Observer connector](./1-1-6-LogObserverConnector/1-1-6-index.html)                   | 10분      |
-| 16:20~17:00 | 11     | [Challenge : MySQL Receiver 추가하기](./1-1-7-ChallengeReceiver/1-1-7-index.html)             | 40분      |
+| 시간        | 인덱스 | 내용                                                                                          | 예상 시간 | 설명                                                                                                                                                                               |
+| ----------- | ------ | --------------------------------------------------------------------------------------------- | --------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 10:00~10:10 | 0      | [개요 설명 & 실습 환경 접속](./1-1-index.html)                                                | 10분      |                                                                                                                                                                                    |
+| 10:10~10:30 | 1      | [OTel Collector 설치 (**IM**)](./1-1-1-DeployOpenTelemetryCollector/1-1-1-index.html)         | 20분      | Splunk OTel 에이전트를 설치하고 O11y Cloud 로 이동하여 **인프라 모니터링** 데이터가 올바르게 수집하는지 확인합니다                                                                 |
+| 10:30~10:50 | 2      | [Pet Clinic JAVA APP 구동시키기](./1-1-2-DeployJavaAPP/1-1-2-index.html)                      | 20분      | Linux 환경에 Springboot 기반의 샘플 앱을 구동시켜 APM 실습을 준비합니다                                                                                                            |
+| 10:50~11:20 | 3      | [Java Instrumentation (**APM**)](./1-1-3-InstrumentJavaAPPwithOpenTelemetry/1-1-3-index.html) | 30분      | Manual Instrument 와 Zero-code Instrument 를 비교 해 보고, Zero-code instrument 를 이용하여 **APM** 데이터를 수집 해 봅니다                                                        |
+| 11:20~12:00 | 4      | [Log collection to Splunk Cloud (**Log**)](./1-1-4-CollectLogs/1-1-4-index.html)              | 40분      | 애플리케이션에서 파일형태로 로그를 발생시키도록 설정 한 후, 파일에서 로그를 읽어 Splunk **로그 플랫폼** 으로 전송하도록 설정합니다.                                                |
+|             |        | **1H 30Min Lunch Time**                                                                       |
+| 13:30~13:50 | 5      | [Related Content 로 통합 분석하기](./1-1-5-RelatedContents/1-1-5-index.html)                  | 20분      | 메트릭 측정데이터와 로그의 저장소가 별도이므로 Related Content 를 통해 통합 분석을 하는 방안에 대해서 설명합니다. 로그플랫폼에서 메트릭 및 APM 데이터를 조회하는 방식을 사용합니다 |
+| 13:50~14:00 | 6      | [Set Log Observer connector](./1-1-6-LogObserverConnector/1-1-6-index.html)                   | 10분      | O11y Cloud 에서 APM 을 통해 에러가 발견되었을 때, LOC 를 통해 로그 연계분석 방안을 실습합니다. 5번 내용과 반대로 O11y Cloud에서 로그를 조회하는 방식을 사용합니다                  |
+| 14:00~14:40 | 7      | [Challenge : MySQL Receiver 추가하기](./1-1-7-ChallengeReceiver/1-1-7-index.html)             | 40분      | **Optional 항목입니다.** MySQL의 DB엔진 측정값을 수집하여 추가로 분석 할 수 있는 기능을 소개합니다.                                                                                |
+|             |        | **20Min Break Time**                                                                          |
+| 15:00~15:20 | 8      | [Splunk Log Platform 컨셉 소개](./1-1-5-RelatedContents/1-1-5-index.html)                     | 10분      | 로그를 저장하는 Splunk Platform에 대해 설명합니다                                                                                                                                  |
+| 15:20~15:40 | 9      | [로그 데이터 수집](./1-1-6-LogObserverConnector/1-1-6-index.html)                             | 20분      | 로그 데이터를 어떤 방식으로 수집할 수 있는지 알아봅니다                                                                                                                            |
+| 15:40~16:00 | 10     | [동적 필드 추출하기](./1-1-7-ChallengeReceiver/1-1-7-index.html)                              | 20분      | 로그에서 동적으로 동작하는 필드를 추출하여 분석하는 법을 실습합니다                                                                                                                |
+| 16:00~16:30 | 11     | [Web Server 로그를 분석하여 대시보드 구축하기](./1-1-7-ChallengeReceiver/1-1-7-index.html)    | 30분      | 실습용으로 준비된 로그셋을 통해서 로그를 분석 해 보고, 추출한 값을 토대로 대시보드를 만들어봅니다                                                                                  |
 
 </br>
 
