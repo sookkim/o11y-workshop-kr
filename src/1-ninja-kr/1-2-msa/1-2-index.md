@@ -51,15 +51,13 @@
 
 ### 오늘은 실습 환경은 이렇게 되어 있습니다
 
-본 워크숍의 목표는 Splunk의 Java 용 자동 검색 및 구성 기능에 대해 소개하는 것입니다.
+본 워크숍의 목표는 Splunk의 Infra Monitoring, APM, Log 를 모두 학습하는 것입니다.
 
 워크샵 시나리오는 Kubernetes에 간단한 ( 계측되지 않은 ) Java 마이크로서비스 애플리케이션을 설치하여 구현됩니다.
 
-기존 Java 기반 배포 환경에 대한 자동 검색 기능을 갖춘 Splunk OpenTelemetry Collector를 설치하는 간단한 단계를 따라하면 메트릭, 추적 및 로그를 Splunk Observability Cloud 로 전송하는 것
+기존 Java 기반 배포 환경에 대한 자동 검색 기능을 갖춘 Splunk OpenTelemetry Collector를 설치하는 간단한 단계를 따라하면 메트릭, 추적 및 로그를 Splunk Observability Cloud 로 전송하는 것이 가능합니다.
 
-Spring PetClinic Java 애플리케이션은 프런트엔드와 백엔드 서비스로 구성된 간단한 마이크로서비스 애플리케이션입니다. 프런트엔드 서비스는 백엔드 서비스와 상호 작용하는 웹 인터페이스를 제공하는 Spring Boot 애플리케이션입니다. 백엔드 서비스는 MySQL 데이터베이스와 상호 작용하는 RESTful API를 제공하는 Spring Boot 애플리케이션입니다.
-
-이 워크숍이 끝나면 Kubernetes에서 실행되는 Java 기반 애플리케이션의 자동 검색 및 구성을 활성화하는 방법에 대해 더 잘 이해하게 될 것입니다.
+샘플로 구현할 Spring PetClinic Java 애플리케이션은 프런트엔드와 백엔드 서비스로 구성된 간단한 마이크로서비스 애플리케이션입니다. 프런트엔드 서비스는 백엔드 서비스와 상호 작용하는 웹 인터페이스를 제공하는 Spring Boot 애플리케이션입니다. 백엔드 서비스는 MySQL 데이터베이스와 상호 작용하는 RESTful API를 제공하는 Spring Boot 애플리케이션입니다.
 
 </br>
 
