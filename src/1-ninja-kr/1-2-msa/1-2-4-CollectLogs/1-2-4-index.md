@@ -8,6 +8,8 @@
 
 </br>
 
+<!--
+
 ## 1. Set up logging in your application
 
 현재 이 PetClinic 애플리케이션은 콘솔로만 로그를 출력 할 뿐, 아무곳에도 로그를 남기고 있지 않습니다. 따라서 INFO, ERROR 로그를 우선 파일 형태로 떨굴 수 있도록 스프링부트 설정을 변경하고 새로 빌드를 하도록 하겠습니다.
@@ -23,33 +25,33 @@
 2. 아래와 같이 xml 파일 내용을 입력하고 저장합니다
 
    ```xml
-   <!--logback-spring.xml-->
+
    <?xml version="1.0" encoding="UTF-8"?>
    <configuration>
-       <!-- 로그 파일 저장 경로 -->
+
        <property name="LOG_PATH" value="logs" />
        <property name="LOG_FILE_NAME" value="petclinic.log" />
 
-       <!-- 콘솔 출력 -->
+
        <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
            <encoder>
                <pattern>%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n</pattern>
            </encoder>
        </appender>
 
-       <!-- 파일 출력 (RollingFileAppender: 날짜별로 파일 분리) -->
+
        <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
            <file>${LOG_PATH}/${LOG_FILE_NAME}</file>
            <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
                <fileNamePattern>${LOG_PATH}/petclinic.%d{yyyy-MM-dd}.log</fileNamePattern>
-               <maxHistory>30</maxHistory> <!-- 30일간 보관 -->
+               <maxHistory>30</maxHistory>
            </rollingPolicy>
            <encoder>
                <pattern>%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n</pattern>
            </encoder>
        </appender>
 
-       <!-- 루트 로거 설정 -->
+
        <root level="INFO">
            <appender-ref ref="CONSOLE" />
            <appender-ref ref="FILE" />
@@ -87,9 +89,11 @@
 
 </br>
 
+-->
+
 ## 2. Collect file logs in Splunk Cloud
 
-로그 수집을 위한 플랫폼은 [Observability Cloud 핸즈온 환경 접속 정보](https://cisco.box.com/s/zi4ws67vlkeaqbiw39t7ochkpgnc7q9c) 파일에서 확인 할 수 있습니다.
+로그 수집을 위한 플랫폼은 Observability Cloud 핸즈온 환경 접속 정보파일에서 확인 할 수 있습니다.
 
 실습을 위해서는 하나의 플랫폼만 이용하면 되므로, 왼쪽 칼럼에 Splunk Cloud URL과 admin, Password 정보를 참조 하도록 합니다.
 
@@ -106,20 +110,29 @@
 2. Splunk o11y cloud 설정파일에서 로그를 전송 할 수 있도록 configuration을 수정합니다. 리눅스 환경으로 다시 돌아가서 설정파일 경로로 이동합니다
 
    ```bash
-   cd /etc/otel/collector
+   cd ~/workshop/k3s/
 
-   sudo vi splunk-otel-collector.conf
+   vi values.yaml
    ```
 
    아래와 같이 인증 정보 설정 부분을 수정 후 저장합니다
 
    ```bash
-   # splunk-otel-collector.conf
+   splunkPlatform:
+    # splunk http event collector(hec) endpoint 추가
+    endpoint: 'https://http-inputs-samsung.stg.splunkcloud.com/services/collector'
+    # Splunk Cloud에서 발급한 hec token 기입
+    token: 'bc77efcf-fc60-494f-b80c-52701d7901d4'
 
-   SPLUNK_HEC_URL=https://http-inputs-lguplus.stg.splunkcloud.com/services/collector/event
-   SPLUNK_HEC_TOKEN=<생성한 토큰 입력>
+    # log를 저장하고 싶은 Index 기입
+    index: 'main'
+    ---
+    ---
+    # Source Type 을 본인 이름으로 지정하여 구별될 수 있도록 합니다
+    sourcetype: 'SooKyung'
    ```
 
+<!--
    이제는 어떤 로그를 수집할 것인지에 대한 설정을 진행합니다
 
    ```bash
@@ -150,6 +163,8 @@
    ```
 
 </br>
+
+-->
 
 <!--
 
@@ -217,12 +232,10 @@
 
    -->
 
-3. 설정을 완료했다면 에이전트를 재시작합니다
+3. 설정을 완료했다면 에이전트를 재배포합니다
 
    ```bash
-   sudo systemctl restart splunk-otel-collector
-
-   systemctl status splunk-otel-collector
+   helm upgrade splunk-otel-collector -f values.yaml splunk-otel-collector-chart/splunk-otel-collector
    ```
 
    </br>
@@ -233,7 +246,7 @@
 
    `index=main sourcetype=<실습자이름>`
 
-    <img src="../../../images/1-ninja-kr/1-9-logcollection.jpg" width="1200" style="border: 1px solid #000; display: block; margin-left: 0;">
+    <img src="../../../images/1-ninja-kr/1-2-log.jpg" width="1200" style="border: 1px solid #000; display: block; margin-left: 0;">
    - 위 스크린샷 처럼 아랫쪽에 수집되는 로그가 표시된다면 성공입니다
 
 </br>

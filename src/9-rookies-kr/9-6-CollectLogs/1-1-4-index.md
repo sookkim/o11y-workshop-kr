@@ -221,7 +221,6 @@
 
 **Module 4. Collect logs to Splunk Cloud DONE!**
 
-<!--
      K8S 환경은 해당내용을 참조하세요
 
 로그 수집은 Splunk Cloud 또는 Cloud 로 해야합니다. 기본적으로 O11y Cloud 엔진은 로그를 저장하지 않기 때문에 HEC 엔드포인트를 통해 Splunk 코어 엔진으로 로그를 보내도록 설정합니다.
