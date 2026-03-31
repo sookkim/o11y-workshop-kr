@@ -121,7 +121,7 @@ HELM 설치 시 yaml 파일을 통해 설정 및 업데이트를 관리해야합
 One-line 커멘드를 이용하여 원격 yaml 파일을 불러 온 후 파라메터를 이용하여 옵션값을 주입하여 설치하였으므로 아래 명령어를 통해 yaml 을 추출합니다
 
 ```bash
-helm get manifest splunk-otel-collector -n default > ~/workshop/k3s/otel-collector.yaml
+helm get values splunk-otel-collector -n default -a -o yaml > ~/workshop/k3s/values.yaml
 ```
 
 아래 디렉토리로 이동하여 파일이 제대로 생성 및 반영되었는지 확인합니다
@@ -129,7 +129,7 @@ helm get manifest splunk-otel-collector -n default > ~/workshop/k3s/otel-collect
 ```bash
 cd ~workshop/k3s/
 
-vi otel-collector.yaml
+vi values.yaml
 ```
 
 </br>

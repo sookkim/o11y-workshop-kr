@@ -91,46 +91,49 @@
 
 -->
 
-## 2. Collect file logs in Splunk Cloud
+## 1. Create HEC Token
 
 로그 수집을 위한 플랫폼은 Observability Cloud 핸즈온 환경 접속 정보파일에서 확인 할 수 있습니다.
 
 실습을 위해서는 하나의 플랫폼만 이용하면 되므로, 왼쪽 칼럼에 Splunk Cloud URL과 admin, Password 정보를 참조 하도록 합니다.
 
-1. Splunk Cloud 를 인증하기 위한 토큰을 생성합니다
-   - Splunk Cloud 화면에서 **[Settings] > [Data Input]** 메뉴로 이동하여 **[Http Event Collector]** 오른쪽에 있는 **[Add New]** 버튼을 클릭합니다
-   - Name : <실습자 이름>\_token
-     <img src="../../../images/1-ninja-kr/1-9-token.jpg" width="800" style="border: 1px solid #000; display: block; margin-left: 0;">
-   - 모두 Next 를 누르고 생성을 완료합니다
-   - 완료 화면에 뜨는 Token Value 를 복사하여 기록 해 둡니다
-     <img src="../../../images/1-ninja-kr/1-9-token2.jpg" width="800" style="border: 1px solid #000; display: block; margin-left: 0;">
+Splunk Cloud 를 인증하기 위한 토큰을 생성합니다
+
+- Splunk Cloud 화면에서 **[Settings] > [Data Input]** 메뉴로 이동하여 **[Http Event Collector]** 오른쪽에 있는 **[Add New]** 버튼을 클릭합니다
+- Name : <실습자 이름>\_token
+  <img src="../../../images/1-ninja-kr/1-9-token.jpg" width="800" style="border: 1px solid #000; display: block; margin-left: 0;">
+- 모두 Next 를 누르고 생성을 완료합니다
+- 완료 화면에 뜨는 Token Value 를 복사하여 기록 해 둡니다
+  <img src="../../../images/1-ninja-kr/1-9-token2.jpg" width="800" style="border: 1px solid #000; display: block; margin-left: 0;">
 
 </br>
 
-2. Splunk o11y cloud 설정파일에서 로그를 전송 할 수 있도록 configuration을 수정합니다. 리눅스 환경으로 다시 돌아가서 설정파일 경로로 이동합니다
+## 2. Collect stdout logs in Splunk Cloud
 
-   ```bash
-   cd ~/workshop/k3s/
+Splunk o11y cloud 설정파일에서 로그를 전송 할 수 있도록 configuration을 수정합니다. 리눅스 환경으로 다시 돌아가서 설정파일 경로로 이동합니다
 
-   vi values.yaml
-   ```
+```bash
+cd ~/workshop/k3s/
 
-   아래와 같이 인증 정보 설정 부분을 수정 후 저장합니다
+vi values.yaml
+```
 
-   ```bash
-   splunkPlatform:
-    # splunk http event collector(hec) endpoint 추가
-    endpoint: 'https://http-inputs-samsung.stg.splunkcloud.com/services/collector'
-    # Splunk Cloud에서 발급한 hec token 기입
-    token: 'bc77efcf-fc60-494f-b80c-52701d7901d4'
+아래와 같이 인증 정보 설정 부분을 수정 후 저장합니다
 
-    # log를 저장하고 싶은 Index 기입
-    index: 'main'
-    ---
-    ---
-    # Source Type 을 본인 이름으로 지정하여 구별될 수 있도록 합니다
-    sourcetype: 'SooKyung'
-   ```
+```bash
+splunkPlatform:
+ # splunk http event collector(hec) endpoint 추가
+ endpoint: 'https://http-inputs-samsung.stg.splunkcloud.com/services/collector'
+ # Splunk Cloud에서 발급한 hec token 기입
+ token: 'bc77efcf-fc60-494f-b80c-52701d7901d4'
+
+ # log를 저장하고 싶은 Index 기입
+ index: 'main'
+ ---
+ ---
+ # Source Type 을 본인 이름으로 지정하여 구별될 수 있도록 합니다
+ sourcetype: 'SooKyung'
+```
 
 <!--
    이제는 어떤 로그를 수집할 것인지에 대한 설정을 진행합니다
@@ -232,25 +235,30 @@
 
    -->
 
-3. 설정을 완료했다면 에이전트를 재배포합니다
+설정을 완료했다면 에이전트를 재배포합니다
 
-   ```bash
-   helm upgrade splunk-otel-collector -f values.yaml splunk-otel-collector-chart/splunk-otel-collector
-   ```
+```bash
+helm upgrade splunk-otel-collector -f values.yaml splunk-otel-collector-chart/splunk-otel-collector
+```
 
    </br>
 
-4. Splunk Cloud 로 가서 로그가 제대로 수집되는지 확인하세요
-   - **[Apps] > [Search & Reporting]** 메뉴로 이동합니다
-   - 검색창에 아래와 같이 입력하여 내가 설정한 로그가 수집되는지 확인합니다
+## 3. Checking logs
 
-   `index=main sourcetype=<실습자이름>`
+Splunk Cloud 로 가서 로그가 제대로 수집되는지 확인하세요
+
+- **[Apps] > [Search & Reporting]** 메뉴로 이동합니다
+- 검색창에 아래와 같이 입력하여 내가 설정한 로그가 수집되는지 확인합니다
+
+`index=main sourcetype=<실습자이름>`
 
     <img src="../../../images/1-ninja-kr/1-2-log.jpg" width="1200" style="border: 1px solid #000; display: block; margin-left: 0;">
-   - 위 스크린샷 처럼 아랫쪽에 수집되는 로그가 표시된다면 성공입니다
+
+- 위 스크린샷 처럼 아랫쪽에 수집되는 로그가 표시된다면 성공입니다
 
 </br>
 
+<!--
 ## 3. Challenge!! 🚀
 
 로그를 잘 살펴보신 분들은 아시겠지만, 멀티라인으로 기록되는 자바 로그가 줄바꿈이 될 때마다 따로 수집되는 것을 확인 할 수 있습니다.
@@ -293,6 +301,8 @@
   <img src="../../../images/1-ninja-kr/1-9-multiline.jpg" width="1200" style="border: 1px solid #000; display: block; margin-left: 0;">
 
 </br>
+
+-->
 
 ---
 
