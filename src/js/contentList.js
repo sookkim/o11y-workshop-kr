@@ -136,8 +136,8 @@ var CONTENTS = [
               },
               {
                 id: '1-2-5', // required. page ID
-                title: '5. Zero Code Instrumentation', // required. Bread crumbs text
-                menuName: '5. Zero Code Instrumentation', // required. Side bar text
+                title: '5. Related Content', // required. Bread crumbs text
+                menuName: '5. Related Content', // required. Side bar text
                 href: '/o11y-workshop-kr/src/1-ninja-kr/1-2-msa/1-2-5-DeployAPPtoK8s/1-2-5-index.html', // required. HTML file path
                 prev: '1-2-4',
                 next: '1-2-6',
@@ -145,8 +145,8 @@ var CONTENTS = [
               },
               {
                 id: '1-2-6', // required. page ID
-                title: '6. Log collection to Splunk Cloud', // required. Bread crumbs text
-                menuName: '6. Log collection to Splunk Cloud', // required. Side bar text
+                title: '6. Set Log Observer Connect', // required. Bread crumbs text
+                menuName: '6. Set Log Observer Connect', // required. Side bar text
                 href: '/o11y-workshop-kr/src/1-ninja-kr/1-2-msa/1-2-6-CollectLogs/1-2-6-index.html', // required. HTML file path
                 prev: '1-2-5',
                 next: '1-2-7',
