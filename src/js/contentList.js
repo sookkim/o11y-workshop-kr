@@ -154,8 +154,8 @@ var CONTENTS = [
               },
               {
                 id: '1-2-7', // required. page ID
-                title: '7. Related Contents', // required. Bread crumbs text
-                menuName: '7. Related Contents', // required. Side bar text
+                title: '7. Challenge : Add Receiver for advanced metrics', // required. Bread crumbs text
+                menuName: '7. Challenge : Add Receiver for advanced metrics', // required. Side bar text
                 href: '/o11y-workshop-kr/src/1-ninja-kr/1-2-msa/1-2-7-RelatedContents/1-2-7-index.html', // required. HTML file path
                 prev: '1-2-6',
                 next: '1-2-8',
@@ -163,8 +163,8 @@ var CONTENTS = [
               },
               {
                 id: '1-2-8', // required. page ID
-                title: '8. Set Log Observer connector', // required. Bread crumbs text
-                menuName: '8. Set Log Observer connector', // required. Side bar text
+                title: '8. Splunk Log Platform', // required. Bread crumbs text
+                menuName: '8. Splunk Log Platform', // required. Side bar text
                 href: '/o11y-workshop-kr/src/1-ninja-kr/1-2-msa/1-2-8-LogObserverConnector/1-2-8-index.html', // required. HTML file path
                 prev: '1-2-7',
                 next: '1-2-9',
@@ -172,8 +172,8 @@ var CONTENTS = [
               },
               {
                 id: '1-2-9', // required. page ID
-                title: '9. Challenge : Add Receier for advanced metrics', // required. Bread crumbs text
-                menuName: '9. Challenge : Add Receier for advanced metrics', // required. Side bar text
+                title: 'Collecting Logs', // required. Bread crumbs text
+                menuName: 'Collecting Logs', // required. Side bar text
                 href: '/o11y-workshop-kr/src/1-ninja-kr/1-2-msa/1-2-9-ChallengeReceiver/1-2-9-index.html', // required. HTML file path
                 prev: '1-2-8',
                 next: '1-2-10',
@@ -181,8 +181,8 @@ var CONTENTS = [
               },
               {
                 id: '1-2-10', // required. page ID
-                title: '10. Collect Metrics, Traces, Logs to Splunk Platform', // required. Bread crumbs text
-                menuName: '10. Collect Metrics, Traces, Logs to Splunk Platform', // required. Side bar text
+                title: '10. Extracting Dynamic fields ', // required. Bread crumbs text
+                menuName: '10. Extracting Dynamic fields', // required. Side bar text
                 href: '/o11y-workshop-kr/src/1-ninja-kr/1-2-msa/1-2-10-CollectMetricsToSplunk/1-2-10-index.html', // required. HTML file path
                 prev: '1-2-9',
                 next: '1-2-11',
@@ -190,8 +190,8 @@ var CONTENTS = [
               },
               {
                 id: '1-2-11', // required. page ID
-                title: '11. SIM Command', // required. Bread crumbs text
-                menuName: '11. SIM Command', // required. Side bar text
+                title: '11. Building Dashboard by analyzing Web server logs', // required. Bread crumbs text
+                menuName: '11. Building Dashboard by analyzing Web server logs', // required. Side bar text
                 href: '/o11y-workshop-kr/src/1-ninja-kr/1-2-msa/1-2-11-SIMCommand/1-2-11-index.html', // required. HTML file path
                 prev: '1-12',
                 next: '2',
