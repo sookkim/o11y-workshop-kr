@@ -352,7 +352,7 @@ var CONTENTS = [
             id: '3-2', // required. page ID
             title: '2. Set Up EKS Cluster', // required. Bread crumbs text
             menuName: '2. Set Up EKS Cluster', // required. Side bar text
-            href: '/o11y-workshop-kr/src/3-isovalent/3-1-overview/3-1-index.html', // required. HTML file path
+            href: '/o11y-workshop-kr/src/3-isovalent/3-2-eksCluster/3-2-index.html', // required. HTML file path
             prev: '3-1',
             next: '3-3',
           },
