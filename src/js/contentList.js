@@ -342,11 +342,19 @@ var CONTENTS = [
         sub: [
           {
             id: '3-1', // required. page ID
-            title: '3-1. Overview & Prerequisite', // required. Bread crumbs text
-            menuName: '3-1. Overview & Prerequisite', // required. Side bar text
+            title: '1. Overview & Prerequisite', // required. Bread crumbs text
+            menuName: '1. Overview & Prerequisite', // required. Side bar text
             href: '/o11y-workshop-kr/src/3-isovalent/3-1-overview/3-1-index.html', // required. HTML file path
             prev: '3',
             next: '3-2',
+          },
+          {
+            id: '3-2', // required. page ID
+            title: '2. Set Up EKS Cluster', // required. Bread crumbs text
+            menuName: '2. Set Up EKS Cluster', // required. Side bar text
+            href: '/o11y-workshop-kr/src/3-isovalent/3-1-overview/3-1-index.html', // required. HTML file path
+            prev: '3-1',
+            next: '3-3',
           },
         ],
       },

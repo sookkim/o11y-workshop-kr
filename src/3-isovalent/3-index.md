@@ -1,14 +1,17 @@
-# Isovalent Splunk Observability Cloud Integration
+# Isovalent Splunk Observability Cloud Integration 🐝
 
-오늘 진행될 Splunk Ninjas Workshop for IT Service Intelligence 🥷 의 콘텐츠는 아래와 같습니다
+오늘 진행될 Isovalent Splunk Observability Cloud Integration 🐝 의 콘텐츠는 아래와 같습니다
 
 원활한 워크샵이 되도록 시간과 아젠다를 참고 부탁드립니다
 
 ## Pre-Requisite
 
-본 워크샵은 Splunk Show 의 아래 워크샵을 미리 실행시켜야 진행이 가능합니다
+본 워크샵은 Splunk Show 의 아래 환경이 마련 된 워크샵을 미리 실행시켜야 진행이 가능합니다
 
 - Splunk4Rookies - Observability
+  - EKS 클러스터, VPC 및 EC2 인스턴스를 생성할 수 있는 권한이 있는 AWS 계정
+  - 액세스 토큰이 포함된 Splunk Observability Cloud 계정
+  - kubectl, eksctl 및 Helm 3.x
 
 ## 교육 목표
 
