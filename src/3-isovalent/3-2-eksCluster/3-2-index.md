@@ -140,88 +140,42 @@ coredns-7875f67b5-mk8ts   0/1     Pending   0          4m30s
 
 </br>
 
-## Architecture
+## 4. EKS API 서버 엔드포인트 조회하기
 
-<img src="../../images/isovalent/3-1-architecture.jpg" width="1200" style="border: 1px solid #000; display: block; margin-left: 0;">
-
-</br>
-
-## Key Components
-
-| Component       | Service Name    | Port | Purpose                              |
-| --------------- | --------------- | ---- | ------------------------------------ |
-| Cilium Agent    | cilium-agent    | 9962 | CNI, network policies, eBPF programs |
-| Cilium Envoy    | cilium-envoy    | 9964 | L7 proxy for HTTP, gRPC              |
-| Cilium Operator | cilium-operator | 9963 | Cluster-wide operations              |
-| Hubble          | hubble-metrics  | 9965 | Network flow metrics                 |
-| Tetragon        | tetragon        | 2112 | Runtime security metrics             |
-
-</br>
-
-## eBPF 사용의 이점
-
-- 고성능 : 최소한의 오버헤드로 Linux 커널에서 실행됩니다.
-- 안전성 : 검증 도구는 프로그램이 안전하게 실행되도록 보장합니다.
-- 유연성 : 커널 모듈 없이 동적 계측 가능
-- 가시성 : 네트워크 및 시스템 동작에 대한 심층적인 통찰력
-
-_이 통합을 통해 기존 CNI 플러그인으로는 불가능했던 수준의 Kubernetes 네트워킹 가시성을 확보할 수 있습니다._
-
-</br>
-
-## Pre-requisite
-
-### SSH 접속을 테스트 해 봅시다
-
-1. 핸즈온 환경 접속 정보 파일을 열어 봅니다
-2. **ssh** 컬럼에 쓰여진 명령어를 그대로 복사하여 터미널에 붙여넣은 후 패스워드는 **sshPassword** 칼럼을 복사하여 입력합니다
-
-   ```bash
-   ]$ ssh -p 2222 splunk@54.180.147.112
-
-    Warning: Permanently added '[54.180.147.112]:2222' (ED25519) to the list of known hosts.
-
-    ░█▀▀▀█ ░█─░█ ░█▀▀▀█ ░█──░█
-    ─▀▀▀▄▄ ░█▀▀█ ░█──░█ ░█░█░█
-    ░█▄▄▄█ ░█─░█ ░█▄▄▄█ ░█▄▀▄█
-
-    splunk@54.180.147.112's password: <여기에 패스워드 입력>
-
-   ```
-
-    </br>
-
-    <img src="../../images/1-ninja-kr/1-1-terminal.jpg" width="800" style="border: 1px solid #000; display: block; margin-left: 0;">
-
-</br>
-
-### 필요한 패키지가 모두 인스톨 되어있는지 확인합니다
+아래 명령어로 EKS cluster를 조최하여 클러스터가 가진 API 서버 엔드포인트를 조회하여 백업합니다
 
 ```bash
-kubectl version --client
+$ aws eks describe-cluster --name isovalent-demo --region ap-northeast-2 \
+--query 'cluster.endpoint' --output text
 
-aws --version
-
-helm version
+https://<number>.gr7.ap-northeast-2.eks.amazonaws.com
 ```
 
-이 실습에 필요한 eksctl 은 설치되어있지 않으므로 아래 명령어를 통해 설치를 진행합니다
+_이 엔드포인트를 이용하여 Cilium 설치를 진행하게 되오니 꼭 메모 해 두세요_
+
+</br>
+
+## 5. Promethus CRD 설치하기
+
+Cilium은 메트릭을 위해 Prometheus ServiceMonitor CRD가 필요하므로 설치합니다
 
 ```bash
-ARCH=amd64
-PLATFORM=$(uname -s)_$ARCH
+$ kubectl apply -f https://github.com/prometheus-operator/prometheus-operator/releases/download/v0.68.0/stripped-down-crds.yaml
 
-curl -sLO "https://github.com/eksctl-io/eksctl/releases/latest/download/eksctl_$PLATFORM.tar.gz"
-
-tar -xzf eksctl_$PLATFORM.tar.gz -C /tmp && rm eksctl_$PLATFORM.tar.gz
-
-sudo install -m 0755 /tmp/eksctl /usr/local/bin && rm /tmp/eksctl
-
-eksctl version
+customresourcedefinition.apiextensions.k8s.io/alertmanagerconfigs.monitoring.coreos.com created
+customresourcedefinition.apiextensions.k8s.io/alertmanagers.monitoring.coreos.com created
+customresourcedefinition.apiextensions.k8s.io/podmonitors.monitoring.coreos.com created
+customresourcedefinition.apiextensions.k8s.io/probes.monitoring.coreos.com created
+customresourcedefinition.apiextensions.k8s.io/prometheusagents.monitoring.coreos.com created
+customresourcedefinition.apiextensions.k8s.io/prometheuses.monitoring.coreos.com created
+customresourcedefinition.apiextensions.k8s.io/prometheusrules.monitoring.coreos.com created
+customresourcedefinition.apiextensions.k8s.io/scrapeconfigs.monitoring.coreos.com created
+customresourcedefinition.apiextensions.k8s.io/servicemonitors.monitoring.coreos.com created
+customresourcedefinition.apiextensions.k8s.io/thanosrulers.monitoring.coreos.com created
 ```
 
 </br>
 
 ---
 
-**Module 1. Isovalent Overview & Prerequisite DONE!**
+**Module 2. Set up EKS Cluster DONE!**
