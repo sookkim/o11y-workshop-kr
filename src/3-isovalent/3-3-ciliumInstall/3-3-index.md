@@ -6,7 +6,7 @@
 
 Cilium을 설치하기 위해 yaml 파일을 먼저 생성하고, 필요한 설정을 정의해야합니다. 우리가 앞선 단계에서 생성한 디렉토리로 이동하여 `cilium-enterprise-values.yaml` 이름의 파일을 생성합니다
 
-아래 설정 내용 중 k8sServiceHost: <YOUR-EKS-API-SERVER-ENDPOINT> 부분의 값을 앞선 모듈에서 복사한 K8S API Server 엔드포인트로 바꾸고 저장합니다
+아래 설정 내용 중 k8sServiceHost: <YOUR-EKS-API-SERVER-ENDPOINT> 부분의 값을 앞선 모듈에서 복사한 K8S API Server 엔드포인트로 바꾸고 저장합니다 (`https://` 프리픽스 제거)
 
 ```yaml
 # Enable/disable debug logging
@@ -122,6 +122,10 @@ enterprise:
       - DNSProxyHA # High-availability DNS proxy (installed separately)
       - HubbleTimescape # Historical flow storage via Timescape
 ```
+
+> `k8sServiceHost: <YOUR-EKS-API-SERVER-ENDPOINT>` 라고 되어있는 부분의 값을 https:// 를 제거하고 나머지 API 서버 주소를 적어줍니다 </br>
+> 예시) </br>
+> `k8sServiceHost: "7A73347301A774CEA7836D86F1104CF8.gr7.ap-northeast-2.eks.amazonaws.com"`
 
 </br>
 
