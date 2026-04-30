@@ -1,356 +1,302 @@
-# Cilium Installation
+# Splunk Integration
 
-우리의 실습용 환경이자 테스트 환경을 구동시킬 EKS Cluster를 아래 절차를 통해 생성합니다
+Splunk OpenTelemetry Collector는 Prometheus 수신기를 사용하여 모든 Isovalent 구성 요소에서 메트릭을 수집합니다. 각 구성 요소는 서로 다른 포트를 통해 메트릭을 노출하며, Cilium과 Hubble은 동일한 Pod(단지 다른 포트 사용)를 공유하므로 Pod 어노테이션에 의존하는 대신 각 구성 요소에 대해 별도의 수신기를 구성합니다.
 
-## 1. Cilium Enterprise 를 위한 Config 생성
+| Component       | Port | What it provides                                        |
+| --------------- | ---- | ------------------------------------------------------- |
+| Cilium Agent    | 9962 | eBPF datapath, policy enforcement, IPAM, BPF map stats  |
+| Cilium Envoy    | 9964 | L7 proxy metrics (HTTP, gRPC)                           |
+| Cilium Operator | 9963 | Cluster-wide identity and endpoint management           |
+| Hubble          | 9965 | Network flows, DNS, HTTP L7, TCP flags, policy verdicts |
+| Tetragon        | 2112 | Runtime security, socket stats, network flow events     |
 
-Cilium을 설치하기 위해 yaml 파일을 먼저 생성하고, 필요한 설정을 정의해야합니다. 우리가 앞선 단계에서 생성한 디렉토리로 이동하여 `cilium-enterprise-values.yaml` 이름의 파일을 생성합니다
+## 1. Splunk Otel Agent 설치를 위한 구성 파일 생성
 
-아래 설정 내용 중 k8sServiceHost: <YOUR-EKS-API-SERVER-ENDPOINT> 부분의 값을 앞선 모듈에서 복사한 K8S API Server 엔드포인트로 바꾸고 저장합니다
-
-```yaml
-# Enable/disable debug logging
-debug:
-  enabled: false
-  verbose: ~
-
-# Configure unique cluster name & ID
-cluster:
-  name: isovalent-demo
-  id: 0
-
-# Configure ENI specifics
-eni:
-  enabled: true
-  updateEC2AdapterLimitViaAPI: true # Dynamically fetch ENI limits from EC2 API
-  awsEnablePrefixDelegation: true # Assign /28 CIDR blocks per ENI (16 IPs) instead of individual IPs
-
-enableIPv4Masquerade: false # Pods use their real VPC IPs — no SNAT needed in ENI mode
-loadBalancer:
-  serviceTopology: true # Prefer backends in the same AZ to reduce cross-AZ traffic costs
-
-ipam:
-  mode: eni
-
-routingMode: native # No overlay tunnels — traffic routes natively through VPC
-
-# BPF / KubeProxyReplacement
-# Cilium replaces kube-proxy entirely with eBPF programs in the kernel.
-# This requires a direct path to the API server, hence k8sServiceHost.
-kubeProxyReplacement: 'true'
-k8sServiceHost: <YOUR-EKS-API-SERVER-ENDPOINT>
-k8sServicePort: 443
-
-# TLS for internal Cilium communication
-tls:
-  ca:
-    certValidityDuration: 3650 # 10 years for the CA cert
-
-# Hubble: network observability built on top of Cilium's eBPF datapath
-hubble:
-  enabled: true
-  metrics:
-    enableOpenMetrics: true # Use OpenMetrics format for better Prometheus compatibility
-    enabled:
-      # DNS: query/response tracking with namespace-level label context
-      - dns:labelsContext=source_namespace,destination_namespace
-      # Drop: packet drop reasons (policy deny, invalid, etc.) per namespace
-      - drop:labelsContext=source_namespace,destination_namespace
-      # TCP: connection state tracking (SYN, FIN, RST) per namespace
-      - tcp:labelsContext=source_namespace,destination_namespace
-      # Port distribution: which destination ports are being used
-      - port-distribution:labelsContext=source_namespace,destination_namespace
-      # ICMP: ping/traceroute visibility with workload identity context
-      - icmp:labelsContext=source_namespace,destination_namespace;sourceContext=workload-name|reserved-identity;destinationContext=workload-name|reserved-identity
-      # Flow: per-workload flow counters (forwarded, dropped, redirected)
-      - flow:sourceContext=workload-name|reserved-identity;destinationContext=workload-name|reserved-identity
-      # HTTP L7: request/response metrics with full workload context and exemplars for trace correlation
-      - 'httpV2:exemplars=true;labelsContext=source_ip,source_namespace,source_workload,destination_namespace,destination_workload,traffic_direction;sourceContext=workload-name|reserved-identity;destinationContext=workload-name|reserved-identity'
-      # Policy: network policy verdict tracking (allowed/denied) per workload
-      - 'policy:sourceContext=app|workload-name|pod|reserved-identity;destinationContext=app|workload-name|pod|dns|reserved-identity;labelsContext=source_namespace,destination_namespace'
-      # Flow export: enables Hubble to export flow records to Timescape for historical storage
-      - flow_export
-    serviceMonitor:
-      enabled: true # Creates a Prometheus ServiceMonitor for auto-discovery
-  tls:
-    enabled: true
-    auto:
-      enabled: true
-      method: cronJob # Automatically rotate Hubble TLS certs on a schedule
-      certValidityDuration: 1095 # 3 years per cert rotation
-  relay:
-    enabled: true # Hubble Relay aggregates flows from all nodes cluster-wide
-    tls:
-      server:
-        enabled: true
-    prometheus:
-      enabled: true
-      serviceMonitor:
-        enabled: true
-  timescape:
-    enabled: true # Stores historical flow data for time-travel debugging
-
-# Cilium Operator: cluster-wide identity and endpoint management
-operator:
-  prometheus:
-    enabled: true
-    serviceMonitor:
-      enabled: true
-
-# Cilium Agent: per-node eBPF datapath metrics
-prometheus:
-  enabled: true
-  serviceMonitor:
-    enabled: true
-
-# Cilium Envoy: L7 proxy metrics (HTTP, gRPC)
-envoy:
-  prometheus:
-    enabled: true
-    serviceMonitor:
-      enabled: true
-
-# Enable the Cilium agent to hand off DNS proxy responsibilities to the
-# external DNS Proxy HA deployment, so policies keep working during upgrades
-extraConfig:
-  external-dns-proxy: 'true'
-
-# Enterprise feature gates — these must be explicitly approved
-enterprise:
-  featureGate:
-    approved:
-      - DNSProxyHA # High-availability DNS proxy (installed separately)
-      - HubbleTimescape # Historical flow storage via Timescape
-```
-
-</br>
-
-## 2. Cilium Enterprise 설치하기
-
-새 노드가 EKS 클러스터에 합류하면 해당 노드의 kubelet은 즉시 네트워킹 설정을 위해 CNI 플러그인을 찾기 시작합니다. kubelet은 `/etc/cni/net.d/` 경로에 존재하는 모든 CNI 구성을 읽어 노드를 초기화하는 데 사용합니다. **노드 그룹을 먼저 생성하면 AWS VPC CNI가 먼저 할당됩니다.** 그렇게 되면 이후에 다른 CNI로 전환하려면 노드를 드레인하고 다시 초기화해야 합니다.
-
-노드가 생성되기 전에 Cilium을 설치하면 `kube-system` 내에 Cilium의 CNI 구성이 이미 준비되어 노드가 시작되는 순간 바로 사용할 수 있게 됩니다. EC2 인스턴스가 부팅되면 Cilium의 DaemonSet Pod가 즉시 스케줄링되고 eBPF 프로그램이 로드되어 노드가 첫 순간부터 `Ready` 상태로 Cilium의 제어 하에 작동하게 됩니다.
-
-이것이 바로 EKS 설정 3단계에서 `disableDefaultAddons: true` 설정과 함께 클러스터를 생성하는 이유입니다 . 클러스터를 생성하지 않으면 AWS VPC CNI가 자동으로 설치되어 Cilium과 충돌이 발생할 수 있습니다.
-
-아래 명령어로 Helm을 사용하여 Cilium을 설치하세요
-
-```bash
-helm install cilium isovalent/cilium --version 1.18.4 \
-  --namespace kube-system -f cilium-enterprise-values.yaml
-```
-
-kubectl get pods -A 명령어로 파드를 조회 해보면 모든 파드가 pending 상태로 표현됩니다. 아직 해당 파드 및 컨테이너가 할당 될 노드를 생성하지 않았으므로 정상적인 상태입니다.
-
-</br>
-
-## 3. Nodegroup 생성하기
-
-노드그룹 생성을 위해 `nodegroup.yaml` 이름의 파일을 생성합니다
+`splunk-otel-collector-values.yaml` 파일을 생성합니다.
+아래 내용중 **<YOUR-SPLUNK-ACCESS-TOKEN>** 과 **<YOUR-SPLUNK-REALM>** 을 맞는 값으로 변경하여 저장합니다
 
 ```yaml
-apiVersion: eksctl.io/v1alpha5
-kind: ClusterConfig
-metadata:
-  name: isovalent-demo
-  region: ap-northeast-2
-managedNodeGroups:
-  - name: standard
-    instanceType: m5.xlarge
-    desiredCapacity: 2
-    privateNetworking: true
-    tags:
-      splunkit_environment_type: non-prd
-      splunkit_data_classification: public
-```
+terminationGracePeriodSeconds: 30
+agent:
+  config:
+    extensions:
+      # k8s_observer watches the Kubernetes API for pod and port changes.
+      # This enables automatic service discovery without static endpoint lists.
+      k8s_observer:
+        auth_type: serviceAccount
+        observe_pods: true
 
-```bash
-$ eksctl create nodegroup -f nodegroup.yaml
+    receivers:
+      kubeletstats:
+        collection_interval: 30s
+        insecure_skip_verify: true
 
-2026-04-29 08:36:07 [ℹ]  will use version 1.30 for new nodegroup(s) based on control plane version
-2026-04-29 08:36:08 [ℹ]  nodegroup "standard" will use "" [AmazonLinux2023/1.30]
-2026-04-29 08:36:08 [ℹ]  1 nodegroup (standard) was included (based on the include/exclude rules)
-2026-04-29 08:36:08 [ℹ]  will create a CloudFormation stack for each of 1 managed nodegroups in cluster "isovalent-demo"
-2026-04-29 08:36:08 [!]  "aws-node" was not found
-2026-04-29 08:36:08 [ℹ]
-2 sequential tasks: { fix cluster compatibility, 1 task: { 1 task: { create managed nodegroup "standard" } }
-}
-2026-04-29 08:36:08 [ℹ]  checking cluster stack for missing resources
-2026-04-29 08:36:09 [ℹ]  cluster stack has all required resources
-2026-04-29 08:36:09 [ℹ]  building managed nodegroup stack "eksctl-isovalent-demo-nodegroup-standard"
-2026-04-29 08:36:09 [ℹ]  deploying stack "eksctl-isovalent-demo-nodegroup-standard"
-2026-04-29 08:36:09 [ℹ]  waiting for CloudFormation stack "eksctl-isovalent-demo-nodegroup-standard"
-2026-04-30 05:15:55 [ℹ]  no tasks
-2026-04-30 05:15:55 [✔]  created 0 nodegroup(s) in cluster "isovalent-demo"
-2026-04-30 05:15:55 [ℹ]  nodegroup "standard" has 2 node(s)
-2026-04-30 05:15:55 [ℹ]  node "ip-10-0-132-115.ap-northeast-2.compute.internal" is ready
-2026-04-30 05:15:55 [ℹ]  node "ip-10-0-174-79.ap-northeast-2.compute.internal" is ready
-2026-04-30 05:15:55 [ℹ]  waiting for at least 2 node(s) to become ready in "standard"
-2026-04-30 05:15:55 [ℹ]  nodegroup "standard" has 2 node(s)
-2026-04-30 05:15:55 [ℹ]  node "ip-10-0-132-115.ap-northeast-2.compute.internal" is ready
-2026-04-30 05:15:55 [ℹ]  node "ip-10-0-174-79.ap-northeast-2.compute.internal" is ready
-2026-04-30 05:15:55 [✔]  created 1 managed nodegroup(s) in cluster "isovalent-demo"
-2026-04-30 05:15:55 [ℹ]  checking security group configuration for all nodegroups
-2026-04-30 05:15:55 [ℹ]  all nodegroups have up-to-date cloudformation templates
-```
+      # Cilium Agent (port 9962) and Hubble (port 9965) both run in the
+      # same DaemonSet pod, identified by label k8s-app=cilium.
+      # We use two separate scrape jobs because they're on different ports.
+      prometheus/isovalent_cilium:
+        config:
+          scrape_configs:
+            - job_name: 'cilium_metrics_9962'
+              scrape_interval: 30s
+              metrics_path: /metrics
+              kubernetes_sd_configs:
+                - role: pod
+              relabel_configs:
+                - source_labels: [__meta_kubernetes_pod_label_k8s_app]
+                  action: keep
+                  regex: cilium
+                - source_labels: [__meta_kubernetes_pod_ip]
+                  target_label: __address__
+                  replacement: ${__meta_kubernetes_pod_ip}:9962
+                - target_label: job
+                  replacement: 'cilium_metrics_9962'
+            - job_name: 'hubble_metrics_9965'
+              scrape_interval: 30s
+              metrics_path: /metrics
+              kubernetes_sd_configs:
+                - role: pod
+              relabel_configs:
+                - source_labels: [__meta_kubernetes_pod_label_k8s_app]
+                  action: keep
+                  regex: cilium
+                - source_labels: [__meta_kubernetes_pod_ip]
+                  target_label: __address__
+                  replacement: ${__meta_kubernetes_pod_ip}:9965
+                - target_label: job
+                  replacement: 'hubble_metrics_9965'
 
-</br>
+      # Cilium Envoy uses a different pod label (k8s-app=cilium-envoy)
+      prometheus/isovalent_envoy:
+        config:
+          scrape_configs:
+            - job_name: 'envoy_metrics_9964'
+              scrape_interval: 30s
+              metrics_path: /metrics
+              kubernetes_sd_configs:
+                - role: pod
+              relabel_configs:
+                - source_labels: [__meta_kubernetes_pod_label_k8s_app]
+                  action: keep
+                  regex: cilium-envoy
+                - source_labels: [__meta_kubernetes_pod_ip]
+                  target_label: __address__
+                  replacement: ${__meta_kubernetes_pod_ip}:9964
+                - target_label: job
+                  replacement: 'cilium_metrics_9964'
 
-## 4. Cilium 설치 확인하기
+      # Cilium Operator is a Deployment (not DaemonSet), identified by io.cilium.app=operator
+      prometheus/isovalent_operator:
+        config:
+          scrape_configs:
+            - job_name: 'cilium_operator_metrics_9963'
+              scrape_interval: 30s
+              metrics_path: /metrics
+              kubernetes_sd_configs:
+                - role: pod
+              relabel_configs:
+                - source_labels: [__meta_kubernetes_pod_label_io_cilium_app]
+                  action: keep
+                  regex: operator
+                - target_label: job
+                  replacement: 'cilium_metrics_9963'
 
-아래 명령어로 설치가 올바르게 되었는지 확인합니다
+      # Tetragon is identified by app.kubernetes.io/name=tetragon
+      prometheus/isovalent_tetragon:
+        config:
+          scrape_configs:
+            - job_name: 'tetragon_metrics_2112'
+              scrape_interval: 30s
+              metrics_path: /metrics
+              kubernetes_sd_configs:
+                - role: pod
+              relabel_configs:
+                - source_labels: [__meta_kubernetes_pod_label_app_kubernetes_io_name]
+                  action: keep
+                  regex: tetragon
+                - source_labels: [__meta_kubernetes_pod_ip]
+                  target_label: __address__
+                  replacement: ${__meta_kubernetes_pod_ip}:2112
+                - target_label: job
+                  replacement: 'tetragon_metrics_2112'
 
-```bash
-# Check nodes
-kubectl get nodes
+    processors:
+      # Strict allowlist filter: only forward metrics we've explicitly named.
+      # Without this, Cilium and Tetragon can generate thousands of metric series
+      # and overwhelm Splunk Observability Cloud with cardinality.
+      filter/includemetrics:
+        metrics:
+          include:
+            match_type: strict
+            metric_names:
+              # --- Kubernetes base metrics ---
+              - container.cpu.usage
+              - container.memory.rss
+              - k8s.container.restarts
+              - k8s.pod.phase
+              - node_namespace_pod_container
+              - tcp.resets
+              - tcp.syn_timeouts
 
-# Check Cilium pods
-kubectl get pods -n kube-system -l k8s-app=cilium
+              # --- Cilium Agent metrics ---
+              # API rate limiting — detect if the agent is being throttled
+              - cilium_api_limiter_processed_requests_total
+              - cilium_api_limiter_processing_duration_seconds
+              # BPF map utilization — alerts when eBPF maps are near capacity
+              - cilium_bpf_map_ops_total
+              # Controller health — tracks background reconciliation tasks
+              - cilium_controllers_group_runs_total
+              - cilium_controllers_runs_total
+              # Endpoint state — how many pods are in each lifecycle state
+              - cilium_endpoint_state
+              # Agent error/warning counts — early warning for problems
+              - cilium_errors_warnings_total
+              # IP address allocation tracking
+              - cilium_ip_addresses
+              - cilium_ipam_capacity
+              # Kubernetes event processing rate
+              - cilium_kubernetes_events_total
+              # L7 policy enforcement (HTTP, DNS, Kafka)
+              - cilium_policy_l7_total
+              # DNS proxy latency histogram — key metric for catching DNS saturation
+              - cilium_proxy_upstream_reply_seconds_bucket
 
-# Check all Cilium components
-kubectl get pods -n kube-system | grep -E "(cilium|hubble)"
-```
+              # --- Hubble metrics ---
+              # DNS query and response counts — primary indicator in the demo scenario
+              - hubble_dns_queries_total
+              - hubble_dns_responses_total
+              # Packet drops by reason (policy_denied, invalid, TTL_exceeded, etc.)
+              - hubble_drop_total
+              # Total flows processed — overall network activity volume
+              - hubble_flows_processed_total
+              # HTTP request latency histogram and total count
+              - hubble_http_request_duration_seconds_bucket
+              - hubble_http_requests_total
+              # ICMP traffic tracking
+              - hubble_icmp_total
+              # Policy verdict counts (forwarded vs. dropped by policy)
+              - hubble_policy_verdicts_total
+              # TCP flag tracking (SYN, FIN, RST) — connection lifecycle visibility
+              - hubble_tcp_flags_total
 
-명령어로 조회했을때 아래와 같은 사항이 확인되어야 정상 상태라고 볼 수 있습니다.
+              # --- Tetragon metrics ---
+              # Total eBPF events processed
+              - tetragon_events_total
+              # DNS cache health
+              - tetragon_dns_cache_evictions_total
+              - tetragon_dns_cache_misses_total
+              - tetragon_dns_total
+              # HTTP response tracking with latency
+              - tetragon_http_response_total
+              - tetragon_http_stats_latency_bucket
+              - tetragon_http_stats_latency_count
+              - tetragon_http_stats_latency_sum
+              # Layer3 errors
+              - tetragon_layer3_event_errors_total
+              # TCP socket statistics — per-connection RTT, retransmits, byte/segment counts
+              # These power the latency and throughput views in Network Explorer
+              - tetragon_socket_stats_retransmitsegs_total
+              - tetragon_socket_stats_rxsegs_total
+              - tetragon_socket_stats_srtt_count
+              - tetragon_socket_stats_srtt_sum
+              - tetragon_socket_stats_txbytes_total
+              - tetragon_socket_stats_txsegs_total
+              - tetragon_socket_stats_rxbytes_total
+              # UDP statistics
+              - tetragon_socket_stats_udp_retrieve_total
+              - tetragon_socket_stats_udp_txbytes_total
+              - tetragon_socket_stats_udp_txsegs_total
+              - tetragon_socket_stats_udp_rxbytes_total
+              # Network flow events (connect, close, send, receive)
+              - tetragon_network_connect_total
+              - tetragon_network_close_total
+              - tetragon_network_send_total
+              - tetragon_network_receive_total
 
-- 2개의 노드가 Ready상태 에 있습니다.
-- Cilium pod 실행 중 (노드당 1개)
-- 허블 및 타임스케이프 실행 중
-- Cilium operator 실행 중
+      resourcedetection:
+        detectors: [system]
+        system:
+          hostname_sources: [os]
 
-  <img src="../../images/isovalent/3-3-cilium.jpg" width="800" style="border: 1px solid #000; display: block; margin-left: 0;">
+    service:
+      pipelines:
+        metrics:
+          receivers:
+            - prometheus/isovalent_cilium
+            - prometheus/isovalent_envoy
+            - prometheus/isovalent_operator
+            - prometheus/isovalent_tetragon
+            - hostmetrics
+            - kubeletstats
+            - otlp
+          processors:
+            - filter/includemetrics
+            - resourcedetection
 
-</br>
+autodetect:
+  prometheus: true
 
-## 5. Tetragon 설치 하기
+clusterName: isovalent-demo
 
-Tetragon은 기본적으로 런타임 보안 및 프로세스 수준 가시성을 제공합니다. Splunk 통합, 특히 Network Explorer 대시보드를 사용하려면 TCP/UDP 소켓 통계, RTT, 연결 이벤트 및 DNS를 커널 수준에서 추적하는 향상된 네트워크 관찰 모드를 활성화하는 것이 좋습니다.
+splunkObservability:
+  accessToken: <YOUR-SPLUNK-ACCESS-TOKEN>
+  realm: <YOUR-SPLUNK-REALM> # e.g. us1, us2, eu0
+  profilingEnabled: true
 
-다음과 같은 이름의 파일을 생성하세요
+cloudProvider: aws
+distribution: eks
+environment: isovalent-demo
 
-`tetragon-network-values.yaml`
-
-```yaml
-# Tetragon configuration with Enhanced Network Observability enabled
-# Required for Splunk Observability Cloud Network Explorer integration
-
-tetragon:
-  # Enable network events — this activates eBPF-based socket tracking
-  enableEvents:
-    network: true
-
-  # Layer3 settings: track TCP, UDP, and ICMP with RTT and latency
-  # These enable the socket stats metrics (srtt, retransmits, bytes, etc.)
-  layer3:
-    tcp:
-      enabled: true
-      rtt:
-        enabled: true # Round-trip time per TCP flow
-    udp:
-      enabled: true
-    icmp:
-      enabled: true
-    latency:
-      enabled: true # Per-connection latency tracking
-
-  # DNS tracking at the kernel level (complements Hubble DNS metrics)
-  dns:
-    enabled: true
-
-  # Expose Tetragon metrics via Prometheus
-  prometheus:
-    enabled: true
-    serviceMonitor:
-      enabled: true
-
-  # Filter out noise from internal system namespaces — we only care about
-  # application workloads, not the observability stack itself
-  exportDenyList: |-
-    {"health_check":true}
-    {"namespace":["", "cilium", "tetragon", "kube-system", "otel-splunk"]}
-
-  # Only include labels that are meaningful for the Network Explorer
-  metricsLabelFilter: 'namespace,workload,binary'
-
+# Gateway mode runs a central collector deployment that receives from all agents.
+# Agents send to the gateway, which handles batching and export to Splunk.
+# This reduces the number of direct connections to Splunk's ingest endpoint.
+gateway:
+  enabled: true
   resources:
-    limits:
-      cpu: 500m
-      memory: 1Gi
     requests:
-      cpu: 100m
-      memory: 256Mi
+      cpu: 250m
+      memory: 512Mi
+    limits:
+      cpu: 1
+      memory: 1Gi
 
-# Enable the Tetragon Operator and TracingPolicy support.
-# With tracingPolicy.enabled: true, the operator manages and deploys
-# TracingPolicies (TCP connection tracking, HTTP visibility, etc.) automatically.
-tetragonOperator:
+# certmanager handles mTLS between the OTel Collector agent and gateway
+certmanager:
   enabled: true
-  tracingPolicy:
-    enabled: true
 ```
 
-저장하고 빠져나온 뒤 아래 명령어로 설치를 진행합니다
+반드시 아래 내용을 교체하여 저장해야합니다
 
-```bash
-$ pwd
-/home/splunk/isovalent
+- `<YOUR-SPLUNK-ACCESS-TOKEN>` : Splunk Observability Cloud 액세스 토큰을 입력합니다
+- `<YOUR-SPLUNK-REALM>` 사용하시는 도메인(예: us1, us2, eu0)을 입력해 주세요.
 
-$ helm install tetragon isovalent/tetragon --version 1.18.0 \
-  --namespace tetragon --create-namespace \
-  -f tetragon-network-values.yaml
-```
+> metric allowlist 를 제한하는 이유는? </br>
+> Cilium은 워크로드, 네임스페이스 및 프로토콜 세부 정보에 대한 모든 레이블 조합을 고려할 때 수천 개의 고유한 메트릭 시리즈를 생성할 수 있습니다. </br>
+> filter/includemetrics 를 사용하지 않으면 사용량이 많은 클러스터에서 50,000개 이상의 활성 시리즈가 생성되어 Splunk의 데이터 수집 용량을 초과할 수 있습니다. </br>
+> 위 목록은 Cilium 및 Hubble 대시보드에 필요한 메트릭과 Network Explorer에 필요한 Tetragon 소켓 통계를 정확히 포함하도록 구성되어 있습니다. 나중에 새 대시보드를 추가하는 경우 이 목록에 메트릭을 추가할 수 있습니다.
 
-이제 설치가 제대로 되었는지 확인합니다
-
-```bash
-$ kubectl get pods -n tetragon
-
-NAME                                READY   STATUS    RESTARTS   AGE
-tetragon-bjnmj                      1/1     Running   0          41s
-tetragon-operator-8bf5847b6-9cksh   1/1     Running   0          41s
-tetragon-sw77g                      1/1     Running   0          41s
-```
-
-> [!NOTE] NOTE </br>
-> Tetragon을 통한 네트워크 모니터링의 이점은 무엇일까요? </br>
-> layer3.tcp.rtt.enabled: true 라는 설정값을 통해 Tetragon은 이 기능을 통해 커널의 TCP 소켓 상태에 연결하여 왕복 시간, 재전송 횟수, 송수신 바이트 수, 세그먼트 수 등 연결별 메트릭을 기록합니다. tetragon*socket_stats*\* 이름으로 시작하는 메트릭은 Splunk의 네트워크 탐색기에서 지연 시간 및 처리량 보기에 사용됩니다. 이 기능을 사용하지 않으면 이벤트 수만 얻을 수 있지만, 사용하면 연결 품질 데이터를 얻을 수 있습니다.
+> 위 설정 중 Tetragon socket stat 이 수집하는 데이터는? </br>
+> `tetragon_socket_stats_*` 메트릭은 Splunk의 Network Explorer에서 연결별 지연 시간 및 처리량 분석을 가능하게 하는 핵심 요소입니다. </br>
+> `srtt_count` 와 `srtt_sum` 메트릭은 로드별 평균 TCP 왕복 시간을 제공하고, `retransmitsegs_total` 은 패킷 손실 및 혼잡을 파악합니다. </br>
+> 또한 `txbytes`, `rxbytes` 은 연결별 대역폭을 보여줍니다. 이러한 정보는 APM이나 표준 인프라 메트릭으로는 확인할 수 없습니다.
 
 </br>
 
-## 6. Cilium DNS Proxy HA 설치하기
-
-여전히 작업중인 isovalent 디렉토리에 `cilium-dns-proxy-ha-values.yaml` 이름의 파일을 생성합니다
-
-```yaml
-enableCriticalPriorityClass: true
-metrics:
-  serviceMonitor:
-    enabled: true
-```
-
-Helm을 통해 DNS 프록시 HA 를 설치후 설치가 잘 되었는지 확인합니다
+## 2. Splunk Otel Collector 설치 및 검증
 
 ```bash
-$ helm upgrade -i cilium-dnsproxy isovalent/cilium-dnsproxy --version 1.16.7 \
-  -n kube-system -f cilium-dns-proxy-ha-values.yaml
-Using ACCESS_TOKEN=
-Using REALM=us1
-Release "cilium-dnsproxy" does not exist. Installing it now.
-NAME: cilium-dnsproxy
-LAST DEPLOYED: Thu Apr 30 05:48:23 2026
-NAMESPACE: kube-system
-STATUS: deployed
-REVISION: 1
-TEST SUITE: None
+$ helm upgrade --install splunk-otel-collector \
+  splunk-otel-collector-chart/splunk-otel-collector \
+  -n otel-splunk --create-namespace \
+  -f splunk-otel-collector-values.yaml
 
-$ kubectl rollout status -n kube-system ds/cilium-dnsproxy --watch
-daemon set "cilium-dnsproxy" successfully rolled out
+$ kubectl logs -n otel-splunk -l app=splunk-otel-collector --tail=100 | grep -i "cilium\|hubble\|tetragon"
 ```
 
-이제 완벽하게 작동하는 Cilium CNI, Hubble observability 및 Tetragon security 가 설치완료 되었고, 해당 EKS 클러스터를 사용할 수 있습니다!
+각 구성 요소의 스크래핑이 성공적으로 완료되었음을 나타내는 로그 항목을 확인할 수 있습니다.
 
 </br>
 
 ---
 
-**Module 3. Cilium Installation DONE!**
+**Module 4. Splunk Integration DONE!**

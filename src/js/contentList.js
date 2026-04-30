@@ -364,6 +364,14 @@ var CONTENTS = [
             prev: '3-2',
             next: '3-4',
           },
+          {
+            id: '3-4', // required. page ID
+            title: '4. Splunk Integration', // required. Bread crumbs text
+            menuName: '4. Splunk Integration', // required. Side bar text
+            href: '/o11y-workshop-kr/src/3-isovalent/3-4-splunkIntegration/3-4-index.html', // required. HTML file path
+            prev: '3-3',
+            next: '3-5',
+          },
         ],
       },
 
