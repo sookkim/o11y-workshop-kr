@@ -356,6 +356,14 @@ var CONTENTS = [
             prev: '3-1',
             next: '3-3',
           },
+          {
+            id: '3-3', // required. page ID
+            title: '3. Cilium Installation', // required. Bread crumbs text
+            menuName: '3. Cilium Installation', // required. Side bar text
+            href: '/o11y-workshop-kr/src/3-isovalent/3-3-ciliumInstall/3-3-index.html', // required. HTML file path
+            prev: '3-2',
+            next: '3-4',
+          },
         ],
       },
 
