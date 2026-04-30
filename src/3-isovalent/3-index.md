@@ -4,6 +4,8 @@
 
 원활한 워크샵이 되도록 시간과 아젠다를 참고 부탁드립니다
 
+</br>
+
 ## Pre-Requisite
 
 본 워크샵은 Splunk Show 의 아래 환경이 마련 된 워크샵을 미리 실행시켜야 진행이 가능합니다
@@ -12,6 +14,8 @@
   - EKS 클러스터, VPC 및 EC2 인스턴스를 생성할 수 있는 권한이 있는 AWS 계정
   - 액세스 토큰이 포함된 Splunk Observability Cloud 계정
   - kubectl, eksctl 및 Helm 3.x
+
+</br>
 
 ## 교육 목표
 
@@ -24,23 +28,14 @@
 - 통합 대시보드에서 네트워크 흐름, 보안 이벤트 및 인프라 지표를 모니터링하세요.
 - eBPF 기반 관찰 가능성 및 kube-proxy 대체에 대해 알아보세요.
 
+</br>
+
 ## Contents
 
-| 시간        | 인덱스 | 내용                                                                                      | 예상 시간 |
-| ----------- | ------ | ----------------------------------------------------------------------------------------- | --------- |
-| 10:00~10:20 | -      | 개요 설명                                                                                 | 20분      |
-| 10:20~10:30 | 00     | [Set up EKS Cluster](./2-1-service-insights/2-1-index.html)                               | 10분      |
-| 10:30~10:40 | 01     | [Cilium Installation](./2-1-service-insights/2-1-1-Services/2-1-1-index.html)             | 10분      |
-| 10:40~10:50 | 02     | [Splunk Integration](./2-1-service-insights/2-1-2-KPIs/2-1-2-index.html)                  | 10분      |
-|             |        | **10 Min Break Time**                                                                     |
-| 11:00~11:30 | 03     | [Varification](./2-1-service-insights/2-1-3-BaseSearches/2-1-3-index.html)                | 30분      |
-| 11:30~12:10 | 04     | [Demo](./2-1-service-insights/2-1-4-ImplementService/2-1-4-index.html)                    | 40분      |
-|             |        | **1 Hour Lunch Time**                                                                     |
-| 13:10~13:50 | 05, 06 | [Entities](./2-1-service-insights/2-1-5-Entities/2-1-5-index.html)                        | 60분      |
-| 14:10~14:30 | 07     | [Threshold](./2-2-event-analytics/2-2-1-Thresholds/2-2-1-index.html)                      | 20분      |
-| 14:30~14:50 | 08     | [Multi-KPI Alerts](./2-2-event-analytics/2-2-2-Multi-KPI/2-2-2-index.html)                | 20분      |
-|             |        | **10 Min Break Time**                                                                     |
-| 15:00~15:20 | 09     | [Aggreation Policies](./2-2-event-analytics/2-2-3-AggregationPolicies/2-2-3-index.html)   | 20분      |
-| 15:20~15:40 | 10     | [Anomaly Detection](./2-2-event-analytics/2-2-3-AggregationPolicies/2-2-3-index.html)     | 20분      |
-| 15:40~16:00 | 11     | [Predictive Anlytics](./2-2-event-analytics/2-2-3-AggregationPolicies/2-2-3-index.html)   | 20분      |
-| 16:00~16:30 | 12     | [Content Pack & Others](./2-2-event-analytics/2-2-3-AggregationPolicies/2-2-3-index.html) | 30분      |
+| 시간        | 인덱스 | 내용                                                         | 예상 시간 |
+| ----------- | ------ | ------------------------------------------------------------ | --------- |
+| 10:00~10:20 | 00     | [Overview & Prerequisite](./3-1-overview/3-1-index.html)     | 20분      |
+| 10:20~10:30 | 01     | [Set up EKS Cluster](./3-2-eksCluster/3-2-index.html)        | 10분      |
+| 10:30~10:40 | 02     | [Cilium Installation](./3-3-ciliumInstall/3-3-index.html)    | 10분      |
+| 10:40~10:50 | 03     | [Splunk Integration](./3-4-splunkIntegration/3-4-index.html) | 10분      |
+| 11:00~11:30 | 04     | [Varification]                                               | 30분      |
