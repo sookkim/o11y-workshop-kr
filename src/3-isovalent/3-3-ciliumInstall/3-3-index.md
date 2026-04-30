@@ -222,6 +222,135 @@ kubectl get pods -n kube-system | grep -E "(cilium|hubble)"
 
 </br>
 
+## 5. Tetragon 설치 하기
+
+Tetragon은 기본적으로 런타임 보안 및 프로세스 수준 가시성을 제공합니다. Splunk 통합, 특히 Network Explorer 대시보드를 사용하려면 TCP/UDP 소켓 통계, RTT, 연결 이벤트 및 DNS를 커널 수준에서 추적하는 향상된 네트워크 관찰 모드를 활성화하는 것이 좋습니다.
+
+다음과 같은 이름의 파일을 생성하세요
+
+`tetragon-network-values.yaml`
+
+```yaml
+# Tetragon configuration with Enhanced Network Observability enabled
+# Required for Splunk Observability Cloud Network Explorer integration
+
+tetragon:
+  # Enable network events — this activates eBPF-based socket tracking
+  enableEvents:
+    network: true
+
+  # Layer3 settings: track TCP, UDP, and ICMP with RTT and latency
+  # These enable the socket stats metrics (srtt, retransmits, bytes, etc.)
+  layer3:
+    tcp:
+      enabled: true
+      rtt:
+        enabled: true # Round-trip time per TCP flow
+    udp:
+      enabled: true
+    icmp:
+      enabled: true
+    latency:
+      enabled: true # Per-connection latency tracking
+
+  # DNS tracking at the kernel level (complements Hubble DNS metrics)
+  dns:
+    enabled: true
+
+  # Expose Tetragon metrics via Prometheus
+  prometheus:
+    enabled: true
+    serviceMonitor:
+      enabled: true
+
+  # Filter out noise from internal system namespaces — we only care about
+  # application workloads, not the observability stack itself
+  exportDenyList: |-
+    {"health_check":true}
+    {"namespace":["", "cilium", "tetragon", "kube-system", "otel-splunk"]}
+
+  # Only include labels that are meaningful for the Network Explorer
+  metricsLabelFilter: 'namespace,workload,binary'
+
+  resources:
+    limits:
+      cpu: 500m
+      memory: 1Gi
+    requests:
+      cpu: 100m
+      memory: 256Mi
+
+# Enable the Tetragon Operator and TracingPolicy support.
+# With tracingPolicy.enabled: true, the operator manages and deploys
+# TracingPolicies (TCP connection tracking, HTTP visibility, etc.) automatically.
+tetragonOperator:
+  enabled: true
+  tracingPolicy:
+    enabled: true
+```
+
+저장하고 빠져나온 뒤 아래 명령어로 설치를 진행합니다
+
+```bash
+$ pwd
+/home/splunk/isovalent
+
+$ helm install tetragon isovalent/tetragon --version 1.18.0 \
+  --namespace tetragon --create-namespace \
+  -f tetragon-network-values.yaml
+```
+
+이제 설치가 제대로 되었는지 확인합니다
+
+```bash
+$ kubectl get pods -n tetragon
+
+NAME                                READY   STATUS    RESTARTS   AGE
+tetragon-bjnmj                      1/1     Running   0          41s
+tetragon-operator-8bf5847b6-9cksh   1/1     Running   0          41s
+tetragon-sw77g                      1/1     Running   0          41s
+```
+
+> [!NOTE] NOTE </br>
+> Tetragon을 통한 네트워크 모니터링의 이점은 무엇일까요? </br>
+> layer3.tcp.rtt.enabled: true 라는 설정값을 통해 Tetragon은 이 기능을 통해 커널의 TCP 소켓 상태에 연결하여 왕복 시간, 재전송 횟수, 송수신 바이트 수, 세그먼트 수 등 연결별 메트릭을 기록합니다. tetragon*socket_stats*\* 이름으로 시작하는 메트릭은 Splunk의 네트워크 탐색기에서 지연 시간 및 처리량 보기에 사용됩니다. 이 기능을 사용하지 않으면 이벤트 수만 얻을 수 있지만, 사용하면 연결 품질 데이터를 얻을 수 있습니다.
+
+</br>
+
+## 6. Cilium DNS Proxy HA 설치하기
+
+여전히 작업중인 isovalent 디렉토리에 `cilium-dns-proxy-ha-values.yaml` 이름의 파일을 생성합니다
+
+```yaml
+enableCriticalPriorityClass: true
+metrics:
+  serviceMonitor:
+    enabled: true
+```
+
+Helm을 통해 DNS 프록시 HA 를 설치후 설치가 잘 되었는지 확인합니다
+
+```bash
+$ helm upgrade -i cilium-dnsproxy isovalent/cilium-dnsproxy --version 1.16.7 \
+  -n kube-system -f cilium-dns-proxy-ha-values.yaml
+Using ACCESS_TOKEN=
+Using REALM=us1
+Release "cilium-dnsproxy" does not exist. Installing it now.
+NAME: cilium-dnsproxy
+LAST DEPLOYED: Thu Apr 30 05:48:23 2026
+NAMESPACE: kube-system
+STATUS: deployed
+REVISION: 1
+TEST SUITE: None
+
+$ kubectl rollout status -n kube-system ds/cilium-dnsproxy --watch
+daemon set "cilium-dnsproxy" successfully rolled out
+```
+
+이제 완벽하게 작동하는 Cilium CNI, Hubble observability 및 Tetragon security 가 설치완료 되었고, 해당 EKS 클러스터를 사용할 수 있습니다!
+
+</br>
+
 ---
 
 **Module 3. Cilium Installation DONE!**
