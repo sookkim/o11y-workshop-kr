@@ -13,7 +13,7 @@ Splunk OpenTelemetry Collector는 Prometheus 수신기를 사용하여 모든 Is
 ## 1. Splunk Otel Agent 설치를 위한 구성 파일 생성
 
 `splunk-otel-collector-values.yaml` 파일을 생성합니다.
-아래 내용중 **<YOUR-SPLUNK-ACCESS-TOKEN>** 과 **<YOUR-SPLUNK-REALM>** 을 맞는 값으로 변경하여 저장합니다
+아래 내용중 `<YOUR-SPLUNK-ACCESS-TOKEN>` 과 `<YOUR-SPLUNK-REALM>` 을 맞는 값으로 변경하여 저장합니다
 
 ```yaml
 terminationGracePeriodSeconds: 30
