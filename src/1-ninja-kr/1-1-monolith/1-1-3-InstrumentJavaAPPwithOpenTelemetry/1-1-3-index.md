@@ -85,13 +85,18 @@ cd /etc/splunk/zeroconfig/
 vi java.conf
 ```
 
-아래 파일 내용을 살펴보면 에이전트 설치 명령어 옵션에 넣었던 내용이 반영 되어이있는 것을 알 수 있습니다.
+아래 파일 내용처럼 추가 내용을 더 작성합니다
+
+- `OTEL_RESOURCE_ATTRIBUTES` : 가장 마지막부분에 콤마(,) 로 구분 후 environment 어트리뷰트를 추가합니다
+- `SPLUNK_PROFILER_ENABLED` : true로 변경
+- `SPLUNK_PROFILER_MEMORY_ENABLED` : true로 변경
+- `SPLUNK_METRICS_ENABLED` : true로 변경
 
 ```conf
 # java.conf
 
 JAVA_TOOL_OPTIONS=-javaagent:/usr/lib/splunk-instrumentation/splunk-otel-javaagent.jar
-OTEL_RESOURCE_ATTRIBUTES=splunk.zc.method=splunk-otel-auto-instrumentation-0.148.0,deployment.environment=sookyung_handson
+OTEL_RESOURCE_ATTRIBUTES=splunk.zc.method=splunk-otel-auto-instrumentation-0.148.0,deployment.environment=<실습자이름>_handson_monilith
 SPLUNK_PROFILER_ENABLED=true
 SPLUNK_PROFILER_MEMORY_ENABLED=true
 SPLUNK_METRICS_ENABLED=true

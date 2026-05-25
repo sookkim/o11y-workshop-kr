@@ -68,8 +68,8 @@
    - Platform : Linux
    - Splunk Observability access token : **sookim-INGEST** 선택
    - Mode : **Host monitoring(agent)** 선택
-   - Autodiscovery : Zero-code 부분 체크 해제
-     <img src="../../../images/1-ninja-kr/1-1-config2.jpg" width="800" style="border: 1px solid #000; display: block; margin-left: 0;">
+   - Autodiscovery : Zero-code 부분 체크 되어있는지 확인
+     <img src="../../../images/1-ninja-kr/1-1-1-config.jpg" width="800" style="border: 1px solid #000; display: block; margin-left: 0;">
    - [Next] 클릭
 
 3. Install Script
@@ -79,9 +79,7 @@
    ```bash
    curl -sSL https://dl.observability.splunkcloud.com/splunk-otel-collector.sh > /tmp/splunk-otel-collector.sh && \
 
-   sudo sh /tmp/splunk-otel-collector.sh --with-instrumentation --deployment-environment <실습자_이름>-handson \
-   --realm us1 -- 9ZCVR5bpuPczHhsDG0Aruw \
-   --enable-profiler --enable-profiler-memory --enable-metrics
+   sudo sh /tmp/splunk-otel-collector.sh --realm us1 -- <token> --mode agent --with-instrumentation  --discovery
    ```
 
    <img src="../../../images/1-ninja-kr/1-1-config3.jpg" width="800" style="border: 1px solid #000; display: block; margin-left: 0;">
