@@ -1,4 +1,4 @@
-# 1-9. Collect logs to Splunk Cloud
+# 4. Collect logs to Splunk Cloud
 
 <!--Host/Linux 환경은 해당 내용을 참조하세요-->
 
@@ -95,8 +95,6 @@
 
 로그 수집을 위한 플랫폼은 Observability Cloud 핸즈온 환경 접속 정보파일에서 확인 할 수 있습니다.
 
-실습을 위해서는 하나의 플랫폼만 이용하면 되므로, 왼쪽 칼럼에 Splunk Cloud URL과 admin, Password 정보를 참조 하도록 합니다.
-
 Splunk Cloud 를 인증하기 위한 토큰을 생성합니다
 
 - Splunk Cloud 화면에서 **[Settings] > [Data Input]** 메뉴로 이동하여 **[Http Event Collector]** 오른쪽에 있는 **[Add New]** 버튼을 클릭합니다
@@ -123,7 +121,7 @@ vi values.yaml
 ```bash
 splunkPlatform:
  # splunk http event collector(hec) endpoint 추가
- endpoint: 'https://http-inputs-samsung.stg.splunkcloud.com/services/collector'
+ endpoint: 'https://http-inputs-scv-shw-b0dd9b29aae460.stg.splunkcloud.com/services/collector'
  # Splunk Cloud에서 발급한 hec token 기입
  token: 'bc77efcf-fc60-494f-b80c-52701d7901d4'
 
@@ -252,7 +250,7 @@ Splunk Cloud 로 가서 로그가 제대로 수집되는지 확인하세요
 
 `index=main sourcetype=<실습자이름>`
 
-    <img src="../../../images/1-ninja-kr/1-2-log.jpg" width="1200" style="border: 1px solid #000; display: block; margin-left: 0;">
+  <img src="../../../images/1-ninja-kr/1-2-log.jpg" width="1200" style="border: 1px solid #000; display: block; margin-left: 0;">
 
 - 위 스크린샷 처럼 아랫쪽에 수집되는 로그가 표시된다면 성공입니다
 

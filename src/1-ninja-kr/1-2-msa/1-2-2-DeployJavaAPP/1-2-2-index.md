@@ -1,4 +1,4 @@
-# Deploy a Java Application
+# 2. Deploy a Java Application
 
 </br>
 

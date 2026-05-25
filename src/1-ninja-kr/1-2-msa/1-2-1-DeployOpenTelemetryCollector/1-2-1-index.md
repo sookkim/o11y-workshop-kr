@@ -51,8 +51,8 @@
    - Platform : Kubernetees
    - Splunk Observability access token : **sookim-INGEST** 선택
    - Cluster name : **_<실습자이름>_-cluster**
-   - Environment : **_<실습자이름>_-handson**
-     <img src="../../../images/1-ninja-kr/1-2-1-install.jpg" width="800" style="border: 1px solid #000; display: block; margin-left: 0;">
+   - Environment : **_<실습자이름>_-handson-msa**
+     <img src="../../../images/1-ninja-kr/1-2-1-install2.jpg" width="800" style="border: 1px solid #000; display: block; margin-left: 0;">
    - [Next] 클릭
 
 3. Install Script
@@ -70,7 +70,7 @@
 
    ```bash
    helm install splunk-otel-collector \
-   --set="splunkObservability.accessToken=9ZCVR5bpuPczHhsDG0Aruw", \
+   --set="splunkObservability.accessToken=<ingest_token>", \
    --set="clusterName=sookyung-cluster", \
    --set="splunkObservability.realm=us1", \
    --set="gateway.enabled=false", \
