@@ -294,158 +294,174 @@ var CONTENTS = [
           },
         ],
       },
-      // Ch3 - Isovalent Integration
-
+      // Ch3 - Advanced Scenario Workshop
       {
-        id: '3', // required. page ID
-        title: 'Isovalent Splunk O11y Cloud Integration', // required. Bread crumbs text
-        menuName: 'Isovalent Splunk O11y Cloud Integration', // required. Side bar text
-        href: '/o11y-workshop-kr/src/3-isovalent/3-index.html', // required. HTML file path
+        id: 'adv', // required. page ID
+        title: 'Advanced Scenario Workshop', // required. Bread crumbs text
+        menuName: 'Advanced Scenario Workshop', // required. Side bar text
+        href: '/o11y-workshop-kr/src/3-Advanced-Scenariso-Workshop/3-index.html', // required. HTML file path
         prev: '2-3-3',
-        next: '4',
+        next: 'adv-1',
         sub: [
           {
-            id: '3-1', // required. page ID
-            title: '1. Overview & Prerequisite', // required. Bread crumbs text
-            menuName: '1. Overview & Prerequisite', // required. Side bar text
-            href: '/o11y-workshop-kr/src/3-isovalent/3-1-overview/3-1-index.html', // required. HTML file path
-            prev: '3',
-            next: '3-2',
+            id: 'adv-1', // required. page ID
+            title: 'Monitoring Agentic AI Applications', // required. Bread crumbs text
+            menuName: 'Monitoring Agentic AI Applications', // required. Side bar text
+            href: '/o11y-workshop-kr/src/3-Advanced-Scenariso-Workshop/1-MonitoringAgenticAIApplications/1-index.html', // required. HTML file path
+            prev: 'adv',
+            next: '3',
+            sub: [],
           },
           {
-            id: '3-2', // required. page ID
-            title: '2. Set Up EKS Cluster', // required. Bread crumbs text
-            menuName: '2. Set Up EKS Cluster', // required. Side bar text
-            href: '/o11y-workshop-kr/src/3-isovalent/3-2-eksCluster/3-2-index.html', // required. HTML file path
-            prev: '3-1',
-            next: '3-3',
+            id: '3', // required. page ID
+            title: 'Isovalent Splunk O11y Cloud Integration', // required. Bread crumbs text
+            menuName: 'Isovalent Splunk O11y Cloud Integration', // required. Side bar text
+            href: '/o11y-workshop-kr/src/3-Advanced-Scenariso-Workshop/3-isovalent/3-index.html', // required. HTML file path
+            prev: 'adv',
+            next: '3-1',
+            sub: [
+              {
+                id: '3-1', // required. page ID
+                title: '1. Overview & Prerequisite', // required. Bread crumbs text
+                menuName: '1. Overview & Prerequisite', // required. Side bar text
+                href: '/o11y-workshop-kr/src/3-Advanced-Scenariso-Workshop/3-isovalent/3-1-overview/3-1-index.html', // required. HTML file path
+                prev: '3',
+                next: '3-2',
+              },
+              {
+                id: '3-2', // required. page ID
+                title: '2. Set Up EKS Cluster', // required. Bread crumbs text
+                menuName: '2. Set Up EKS Cluster', // required. Side bar text
+                href: '/o11y-workshop-kr/src/3-Advanced-Scenariso-Workshop/3-isovalent/3-2-eksCluster/3-2-index.html', // required. HTML file path
+                prev: '3-1',
+                next: '3-3',
+              },
+              {
+                id: '3-3', // required. page ID
+                title: '3. Cilium Installation', // required. Bread crumbs text
+                menuName: '3. Cilium Installation', // required. Side bar text
+                href: '/o11y-workshop-kr/src/3-Advanced-Scenariso-Workshop/3-isovalent/3-3-ciliumInstall/3-3-index.html', // required. HTML file path
+                prev: '3-2',
+                next: '3-4',
+              },
+              {
+                id: '3-4', // required. page ID
+                title: '4. Splunk Integration', // required. Bread crumbs text
+                menuName: '4. Splunk Integration', // required. Side bar text
+                href: '/o11y-workshop-kr/src/3-Advanced-Scenariso-Workshop/3-isovalent/3-4-splunkIntegration/3-4-index.html', // required. HTML file path
+                prev: '3-3',
+                next: '4',
+              },
+            ],
           },
           {
-            id: '3-3', // required. page ID
-            title: '3. Cilium Installation', // required. Bread crumbs text
-            menuName: '3. Cilium Installation', // required. Side bar text
-            href: '/o11y-workshop-kr/src/3-isovalent/3-3-ciliumInstall/3-3-index.html', // required. HTML file path
-            prev: '3-2',
-            next: '3-4',
+            id: '4', // required. page ID
+            title: 'Advanced Collector Configuration', // required. Bread crumbs text
+            menuName: 'Advanced Collector Configuration', // required. Side bar text
+            href: '/o11y-workshop-kr/src/3-Advanced-Scenariso-Workshop/4-advancedConfig/4-index.html', // required. HTML file path
+            prev: '3-4',
+            next: '4-0',
+            sub: [
+              {
+                id: '4-0', // required. page ID
+                title: 'Pre-requisites', // required. Bread crumbs text
+                menuName: 'Pre-requisites', // required. Side bar text
+                href: '/o11y-workshop-kr/src/3-Advanced-Scenariso-Workshop/4-advancedConfig/3-0-requirements/3-0-index.html', // required. HTML file path
+                prev: '4',
+                next: '4-1',
+                sub: [],
+              },
+              {
+                id: '4-1', // required. page ID
+                title: '1. Agent Setup', // required. Bread crumbs text
+                menuName: '1. Agent Setup', // required. Side bar text
+                href: '/o11y-workshop-kr/src/3-Advanced-Scenariso-Workshop/4-advancedConfig/3-1-agentSetup/3-1-index.html', // required. HTML file path
+                prev: '4-0',
+                next: '4-2',
+                sub: [],
+              },
+              {
+                id: '4-2', // required. page ID
+                title: '2. Gateway Setup', // required. Bread crumbs text
+                menuName: '2. Gateway Setup', // required. Side bar text
+                href: '/o11y-workshop-kr/src/3-Advanced-Scenariso-Workshop/4-advancedConfig/3-2-gateway/3-2-index.html', // required. HTML file path
+                prev: '4-1',
+                next: '4-3',
+                sub: [],
+              },
+              {
+                id: '4-3', // required. page ID
+                title: '3. Filelog Setup', // required. Bread crumbs text
+                menuName: '3. Filelog Setup', // required. Side bar text
+                href: '/o11y-workshop-kr/src/3-Advanced-Scenariso-Workshop/4-advancedConfig/3-3-filelog/3-3-index.html', // required. HTML file path
+                prev: '4-2',
+                next: '4-4',
+                sub: [],
+              },
+              {
+                id: '4-4', // required. page ID
+                title: '4. Building Resilience', // required. Bread crumbs text
+                menuName: '4. Building Resilience', // required. Side bar text
+                href: '/o11y-workshop-kr/src/3-Advanced-Scenariso-Workshop/4-advancedConfig/3-4-resilience/3-4-index.html', // required. HTML file path
+                prev: '4-3',
+                next: '4-5',
+                sub: [],
+              },
+              {
+                id: '4-5', // required. page ID
+                title: '5. Dropping Spans', // required. Bread crumbs text
+                menuName: '5. Dropping Spans', // required. Side bar text
+                href: '/o11y-workshop-kr/src/3-Advanced-Scenariso-Workshop/4-advancedConfig/3-5-droppingSpan/3-5-index.html', // required. HTML file path
+                prev: '4-4',
+                next: '4-6',
+                sub: [],
+              },
+              {
+                id: '4-6', // required. page ID
+                title: '6. Redacting Sensitive Data', // required. Bread crumbs text
+                menuName: '6. Redacting Sensitive Data', // required. Side bar text
+                href: '/o11y-workshop-kr/src/3-Advanced-Scenariso-Workshop/4-advancedConfig/3-6-sensitive/3-6-index.html', // required. HTML file path
+                prev: '4-5',
+                next: '4-7',
+                sub: [],
+              },
+              {
+                id: '4-7', // required. page ID
+                title: '7. Transform Data', // required. Bread crumbs text
+                menuName: '7. Transform Data', // required. Side bar text
+                href: '/o11y-workshop-kr/src/3-Advanced-Scenariso-Workshop/4-advancedConfig/3-7-transform/3-7-index.html', // required. HTML file path
+                prev: '4-6',
+                next: '4-8',
+                sub: [],
+              },
+              {
+                id: '4-8', // required. page ID
+                title: '8. Routing Data', // required. Bread crumbs text
+                menuName: '8. Routing Data', // required. Side bar text
+                href: '/o11y-workshop-kr/src/3-Advanced-Scenariso-Workshop/4-advancedConfig/3-8-routing/3-8-index.html', // required. HTML file path
+                prev: '4-7',
+                next: '8',
+                sub: [],
+              },
+            ],
           },
           {
-            id: '3-4', // required. page ID
-            title: '4. Splunk Integration', // required. Bread crumbs text
-            menuName: '4. Splunk Integration', // required. Side bar text
-            href: '/o11y-workshop-kr/src/3-isovalent/3-4-splunkIntegration/3-4-index.html', // required. HTML file path
-            prev: '3-3',
-            next: '3-5',
+            id: '8', // required. page ID
+            title: 'Real User Monitoring', // required. Bread crumbs text
+            menuName: 'Real User Monitoring', // required. Side bar text
+            href: '/o11y-workshop-kr/src/3-Advanced-Scenariso-Workshop/8-realUserMonitoring/4-index.html', // required. HTML file path
+            prev: '4-8',
+            next: '9',
+          },
+          {
+            id: '9', // required. page ID
+            title: 'Splunk Rookies Workshop for Observability', // required. Bread crumbs text
+            menuName: 'Splunk Rookies Workshop for Observability', // required. Side bar text
+            href: '/o11y-workshop-kr/src/3-Advanced-Scenariso-Workshop/9-rookies-kr/9-1-DockerizeApp/9-1-index.html', // required. HTML file path
+            prev: '8',
+            next: '9-1',
           },
         ],
-      },
-
-      // Ch4 - Advanced Collector Configuraiton
-      {
-        id: '4', // required. page ID
-        title: 'Advanced Collector Configuraiton', // required. Bread crumbs text
-        menuName: 'Advanced Collector Configuraiton', // required. Side bar text
-        href: '/o11y-workshop-kr/src/4-advancedConfig/4-index.html', // required. HTML file path
-        prev: '2-1-5',
-        next: '4-0',
-        sub: [
-          {
-            id: '4-0', // required. page ID
-            title: 'Pre-requisites', // required. Bread crumbs text
-            menuName: 'Pre-requisites', // required. Side bar text
-            href: '/o11y-workshop-kr/src/4-advancedConfig/4-0-requirements/4-0-index.html', // required. HTML file path
-            prev: '4',
-            next: '4-1',
-            sub: [],
-          },
-          {
-            id: '4-1', // required. page ID
-            title: '1. Agent Setup', // required. Bread crumbs text
-            menuName: '1. Agent Setup', // required. Side bar text
-            href: '/o11y-workshop-kr/src/4-advancedConfig/4-1-agentSetup/4-1-index.html', // required. HTML file path
-            prev: '4-0',
-            next: '4-2',
-            sub: [],
-          },
-          {
-            id: '4-2', // required. page ID
-            title: '2. Gateway Setup', // required. Bread crumbs text
-            menuName: '2. Gateway  Setup', // required. Side bar text
-            href: '/o11y-workshop-kr/src/4-advancedConfig/4-2-gateway/4-2-index.html', // required. HTML file path
-            prev: '4-1',
-            next: '4-3',
-            sub: [],
-          },
-          {
-            id: '4-3', // required. page ID
-            title: '3. Filelog Setup', // required. Bread crumbs text
-            menuName: '3. Filelog  Setup', // required. Side bar text
-            href: '/o11y-workshop-kr/src/4-advancedConfig/4-4-filelog/4-4-index.html', // required. HTML file path
-            prev: '4-2',
-            next: '4-4',
-            sub: [],
-          },
-          {
-            id: '4-4', // required. page ID
-            title: '4. Building Resilience', // required. Bread crumbs text
-            menuName: '4. Building Resilience', // required. Side bar text
-            href: '/o11y-workshop-kr/src/4-advancedConfig/4-4-resilience/4-4-index.html', // required. HTML file path
-            prev: '4-3',
-            next: '4-5',
-            sub: [],
-          },
-          {
-            id: '4-5', // required. page ID
-            title: '5. Dropping Spans', // required. Bread crumbs text
-            menuName: '5. Dropping Spans', // required. Side bar text
-            href: '/o11y-workshop-kr/src/4-advancedConfig/4-5-droppingSpan/4-5-index.html', // required. HTML file path
-            prev: '4-4',
-            next: '4-6',
-            sub: [],
-          },
-          {
-            id: '4-6', // required. page ID
-            title: '6. Redacting Sensitive Data', // required. Bread crumbs text
-            menuName: '6. Redacting Sensitive Data', // required. Side bar text
-            href: '/o11y-workshop-kr/src/4-advancedConfig/4-6-sensitive/4-6-index.html', // required. HTML file path
-            prev: '4-5',
-            next: '4-7',
-            sub: [],
-          },
-          {
-            id: '4-7', // required. page ID
-            title: '7. Transform Data', // required. Bread crumbs text
-            menuName: '7. Transform Data', // required. Side bar text
-            href: '/o11y-workshop-kr/src/4-advancedConfig/4-7-transform/4-7-index.html', // required. HTML file path
-            prev: '4-6',
-            next: '4-8',
-            sub: [],
-          },
-          {
-            id: '4-8', // required. page ID
-            title: '8. Routing Data', // required. Bread crumbs text
-            menuName: '8. Routing Data', // required. Side bar text
-            href: '/o11y-workshop-kr/src/4-advancedConfig/4-8-routing/4-8-index.html', // required. HTML file path
-            prev: '4-7',
-            next: '4-9',
-            sub: [],
-          },
-        ],
-      },
-      {
-        id: '8', // required. page ID
-        title: 'Real User Monitoring', // required. Bread crumbs text
-        menuName: 'Real User Monitoring', // required. Side bar text
-        href: '/o11y-workshop-kr/src/4-realUserMonitoring/4-index.html', // required. HTML file path
-        prev: '3-8',
-        next: '4-1',
-      },
-      {
-        id: '9', // required. page ID
-        title: 'Splunk Rookies Workshop for Observability', // required. Bread crumbs text
-        menuName: 'Splunk Rookies Workshop for Observability', // required. Side bar text
-        href: '/o11y-workshop-kr/src/4-realUserMonitoring/4-index.html', // required. HTML file path
-        prev: '9-8',
-        next: '4-1',
       },
     ],
   },
