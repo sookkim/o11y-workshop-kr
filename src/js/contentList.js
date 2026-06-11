@@ -317,7 +317,26 @@ var CONTENTS = [
                 menuName: '1. Deploy the OpenTelemetry Collector', // required. Side bar text
                 href: '/o11y-workshop-kr/src/3-Advanced-Scenariso-Workshop/3-1-MonitoringAgenticAIApplications/3-1-1-DeployOpenTelemetryCollector/3-1-1-index.html', // required. HTML file path
                 prev: '3-1',
+                next: '3-1-2',
+                sub: [],
+              },
+              {
+                id: '3-1-2', // required. page ID
+                title: '2. Agentic AI Application Architecture', // required. Bread crumbs text
+                menuName: '2. Agentic AI Application Architecture', // required. Side bar text
+                href: '/o11y-workshop-kr/src/3-Advanced-Scenariso-Workshop/3-1-MonitoringAgenticAIApplications/3-1-2-agenticAIappArch/3-1-2-index.html', // required. HTML file path
+                prev: '3-1-1',
+                next: '3-1-3',
+                sub: [],
+              },
+              {
+                id: '3-1-3', // required. page ID
+                title: '3. Deploy Agentic AI', // required. Bread crumbs text
+                menuName: '3. Deploy Agentic AI', // required. Side bar text
+                href: '/o11y-workshop-kr/src/3-Advanced-Scenariso-Workshop/3-1-MonitoringAgenticAIApplications/3-1-3-DeployAgenticAI/3-1-3-index.html', // required. HTML file path
+                prev: '3-1-2',
                 next: '3-2',
+                sub: [],
               },
             ],
           },
