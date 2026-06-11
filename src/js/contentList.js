@@ -296,21 +296,30 @@ var CONTENTS = [
       },
       // Ch3 - Advanced Scenario Workshop
       {
-        id: 'adv', // required. page ID
+        id: '3', // required. page ID
         title: 'Advanced Scenario Workshop', // required. Bread crumbs text
         menuName: 'Advanced Scenario Workshop', // required. Side bar text
         href: '/o11y-workshop-kr/src/3-Advanced-Scenariso-Workshop/3-index.html', // required. HTML file path
         prev: '2-3-3',
-        next: 'adv-1',
+        next: '3-1',
         sub: [
           {
-            id: 'adv-1', // required. page ID
+            id: '3-1', // required. page ID
             title: 'Monitoring Agentic AI Applications', // required. Bread crumbs text
             menuName: 'Monitoring Agentic AI Applications', // required. Side bar text
-            href: '/o11y-workshop-kr/src/3-Advanced-Scenariso-Workshop/1-MonitoringAgenticAIApplications/1-index.html', // required. HTML file path
-            prev: 'adv',
-            next: '3',
-            sub: [],
+            href: '/o11y-workshop-kr/src/3-Advanced-Scenariso-Workshop/3-1-MonitoringAgenticAIApplications/3-1-index.html', // required. HTML file path
+            prev: '3',
+            next: '3-2',
+            sub: [
+              {
+                id: '3-1-1', // required. page ID
+                title: '1. Deploy the OpenTelemetry Collector', // required. Bread crumbs text
+                menuName: '1. Deploy the OpenTelemetry Collector', // required. Side bar text
+                href: '/o11y-workshop-kr/src/3-Advanced-Scenariso-Workshop/3-1-MonitoringAgenticAIApplications/3-1-1-DeployOpenTelemetryCollector/3-1-1-index.html', // required. HTML file path
+                prev: '3-1',
+                next: '3-2',
+              },
+            ],
           },
           {
             id: '3', // required. page ID
