@@ -86,7 +86,8 @@ OpenAI 엔드포인트와 키를 저장하기 위해 Kubernetes 시크릿을 사
   --from-literal=openai-api-key=$OPENAI_API_KEY
 ```
 
-> [!TIP] </br>
+> [!TIP]
+>
 > 'Missing variables' 오류 메시지가 표시되면 이 명령을 실행하기 전에 OpenAI API에 연결하기 위한 환경 변수를 수동으로 정의해야 합니다.
 
 </br>

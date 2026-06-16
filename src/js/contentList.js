@@ -344,6 +344,15 @@ var CONTENTS = [
                 menuName: '4. Deploy Agentic AI', // required. Side bar text
                 href: '/o11y-workshop-kr/src/3-Advanced-Scenariso-Workshop/3-1-MonitoringAgenticAIApplications/3-1-4-DeployAgenticAI/3-1-4-index.html', // required. HTML file path
                 prev: '3-1-3',
+                next: '3-1-5',
+                sub: [],
+              },
+              {
+                id: '3-1-5', // required. page ID
+                title: '5. Instrument the Agentic AI Application', // required. Bread crumbs text
+                menuName: '5. Instrument the Agentic AI Application', // required. Side bar text
+                href: '/o11y-workshop-kr/src/3-Advanced-Scenariso-Workshop/3-1-MonitoringAgenticAIApplications/3-1-5-InstrumentAIApp/3-1-5-index.html', // required. HTML file path
+                prev: '3-1-4',
                 next: '3-2',
                 sub: [],
               },
