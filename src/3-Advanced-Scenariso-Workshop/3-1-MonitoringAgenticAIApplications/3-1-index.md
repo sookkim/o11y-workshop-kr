@@ -64,7 +64,7 @@ Splunk Observability for AI는 AI 애플리케이션 스택의 성능, 품질, �
 
 </br>
 
-<img src="https://splunk.github.io/observability-workshop/en/ninja-workshops/1-automatic-discovery/1-petclinic-monolith/images/petclinic-exercise.png" width="1200" style="border: 1px solid #000; display: block; margin-left: 0;">
+<img src="https://splunk.github.io/observability-workshop/en/ninja-workshops/foundations/1-automatic-discovery/1-petclinic-monolith/images/petclinic-exercise.png" width="1200" style="border: 1px solid #000; display: block; margin-left: 0;">
 
 </br>
 

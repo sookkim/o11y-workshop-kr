@@ -36,7 +36,7 @@
 2. Splunk Opentelemetry Collector 를 설치합니다
    - **[Data Management] > [Available Integration] > [Splunk OpenTelemetry Collector]**
    - Platform : Kubernetees
-   - Splunk Observability access token : **sookim-INGEST** 선택
+   - Splunk Observability access token : **kr-partnerworkshop-INGEST** 선택 - 동일한 토큰이 없을때는 강사가 알려주는 토큰을 사용하세요
    - Cluster name : **_<실습자이름>_-cluster**
    - Environment : **_<실습자이름>_-handson-msa**
      <img src="../../../images/1-ninja-kr/1-2-1-install2.jpg" width="800" style="border: 1px solid #000; display: block; margin-left: 0;">

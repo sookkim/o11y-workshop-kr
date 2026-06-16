@@ -25,7 +25,7 @@ Azure OpenAI에 대해 여러 가지 지표가 수집됩니다.
 
 Splunk O11y Cloud 화면에서 **[Metrics] > [Metric Finder]** 로 이동한 다음, 해당 `ProcessedPromptTokens` 메트릭을 검색 하고 **[View in chart]** 를 클릭합니다.
 
-> [!NOTE]
+> [!NOTE] </br>
 > 이 [링크](https://app.us1.signalfx.com/#/chart/v2/new?template=default&filters=sf_metric:ProcessedPromptTokens) 를 따라가면 바로 확인 할 수 있습니다
 
 ![](https://splunk.github.io/observability-workshop/en/ninja-workshops/ai/18-agentic-ai/images/ProcessedPromptTokensMetric.png)

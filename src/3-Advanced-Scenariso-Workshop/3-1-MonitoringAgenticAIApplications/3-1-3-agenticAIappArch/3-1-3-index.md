@@ -336,3 +336,9 @@ def plan_synthesizer_node(state: PlannerState) -> PlannerState:
 - 최종 답변으로 종합하다
 
 이것이 바로 이 개요에서 여러분이 얻어야 할 구조 내용중 하나입니다.
+
+</br>
+
+---
+
+**Module 3. Agentic AI Application Architecture DONE!**
