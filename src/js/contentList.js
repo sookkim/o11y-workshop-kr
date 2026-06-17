@@ -353,6 +353,15 @@ var CONTENTS = [
                 menuName: '5. Instrument the Agentic AI Application', // required. Side bar text
                 href: '/o11y-workshop-kr/src/3-Advanced-Scenariso-Workshop/3-1-MonitoringAgenticAIApplications/3-1-5-InstrumentAIApp/3-1-5-index.html', // required. HTML file path
                 prev: '3-1-4',
+                next: '3-1-6',
+                sub: [],
+              },
+              {
+                id: '3-1-6', // required. page ID
+                title: '6. Review APM Data', // required. Bread crumbs text
+                menuName: '6. Review APM Data', // required. Side bar text
+                href: '/o11y-workshop-kr/src/3-Advanced-Scenariso-Workshop/3-1-MonitoringAgenticAIApplications/3-1-6-ReveiwAPMData/3-1-6-index.html', // required. HTML file path
+                prev: '3-1-5',
                 next: '3-2',
                 sub: [],
               },
