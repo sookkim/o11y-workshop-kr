@@ -362,6 +362,15 @@ var CONTENTS = [
                 menuName: '6. Review APM Data', // required. Side bar text
                 href: '/o11y-workshop-kr/src/3-Advanced-Scenariso-Workshop/3-1-MonitoringAgenticAIApplications/3-1-6-ReveiwAPMData/3-1-6-index.html', // required. HTML file path
                 prev: '3-1-5',
+                next: '3-1-7',
+                sub: [],
+              },
+              {
+                id: '3-1-7', // required. page ID
+                title: '7. Add Tool Calls', // required. Bread crumbs text
+                menuName: '7. Add Tool Calls', // required. Side bar text
+                href: '/o11y-workshop-kr/src/3-Advanced-Scenariso-Workshop/3-1-MonitoringAgenticAIApplications/3-1-7-AddToolCalls/3-1-7-index.html', // required. HTML file path
+                prev: '3-1-6',
                 next: '3-2',
                 sub: [],
               },
