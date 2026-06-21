@@ -50,7 +50,7 @@ Splunk Observability for AI는 AI 애플리케이션 스택의 성능, 품질, �
 | 13:00~13:20                 | 07     | [Add Tool Calls](./3-1-7-AddToolCalls/3-1-7-index.html)                                             | 20분      |
 | 13:20~13:30                 | 08     | [Detect Quality Issue](./3-1-8-DetectQualityIssue/3-1-8-index.html)                                 | 10분      |
 | 13:30~13:40                 | 09     | [Add AI Defense Instrumentation](./3-1-9-AIDefence/3-1-9-index.html)                                | 10분      |
-| 13:40~13:50                 | 09     | [Detect Security Risks](./3-1-10-SecurityIssue/3-1-10-index.html)                                   | 10분      |
+| 13:40~14:00                 | 10     | [Detect Security Risks](./3-1-10-SecurityIssue/3-1-10-index.html)                                   | 20분      |
 
 ## Set up your Hands-on Environment
 
