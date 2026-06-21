@@ -119,6 +119,35 @@ cd ~workshop/k3s/
 vi values.yaml
 ```
 
+Gen AI 에 특화된 모니터링을 위해 아래와 같은 설정을 집어넣어 봅시다.
+
+```yaml
+agent:
+  config:
+    exporters:
+      signalfx:
+        send_otlp_histograms: true
+```
+
+이 사용자 지정 구성을 통해 익스포터가 수신한 모든 히스토그램 메트릭은 SignalFx 형식으로 변환되지 않고 OTLP 형식으로 Splunk Observability 백엔드로 전송됩니다. 이 설정은 `gen_ai.evaluation.score` 와 같이 AI 에이전트 모니터링에서 사용하는 히스토그램 메트릭이 예상대로 처리되도록 하는 데 매우 중요합니다.
+
+이제 다음 명령어를 사용하여 컬렉터를 재배포 합니다
+
+```bash
+helm upgrade splunk-otel-collector -f ./vlues.yaml splunk-otel-collector-chart/splunk-otel-collector
+```
+
+OTel 에이전트 파드가 제대로 구동중인지 확인합니다
+
+```bash
+$ kubectl get pods | grep splunk-otel
+splunk-otel-collector-agent-jqshf                            1/1     Running   0          2m20s
+splunk-otel-collector-agent-m6b2s                            1/1     Running   0          2m20s
+splunk-otel-collector-agent-z7tmr                            1/1     Running   0          2m20s
+splunk-otel-collector-k8s-cluster-receiver-c4f66966d-49slc   1/1     Running   0          2m20s
+splunk-otel-collector-operator-794c5fc9f7-n2hpb              2/2     Running   0          2m20s
+```
+
 </br>
 
 ## 데이터가 정상적으로 수집되는지 확인 해 봅시다
