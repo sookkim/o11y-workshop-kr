@@ -358,8 +358,8 @@ var CONTENTS = [
               },
               {
                 id: '3-1-6', // required. page ID
-                title: '6. Review APM Data', // required. Bread crumbs text
-                menuName: '6. Review APM Data', // required. Side bar text
+                title: '6. Review Agent Trace Data', // required. Bread crumbs text
+                menuName: '6. Review Agent Trace Data', // required. Side bar text
                 href: '/o11y-workshop-kr/src/3-Advanced-Scenariso-Workshop/3-1-MonitoringAgenticAIApplications/3-1-6-ReveiwAPMData/3-1-6-index.html', // required. HTML file path
                 prev: '3-1-5',
                 next: '3-1-7',
@@ -371,6 +371,24 @@ var CONTENTS = [
                 menuName: '7. Add Tool Calls', // required. Side bar text
                 href: '/o11y-workshop-kr/src/3-Advanced-Scenariso-Workshop/3-1-MonitoringAgenticAIApplications/3-1-7-AddToolCalls/3-1-7-index.html', // required. HTML file path
                 prev: '3-1-6',
+                next: '3-1-8',
+                sub: [],
+              },
+              {
+                id: '3-1-8', // required. page ID
+                title: '8. Detect Quality Issue', // required. Bread crumbs text
+                menuName: '8. Detect Quality Issue', // required. Side bar text
+                href: '/o11y-workshop-kr/src/3-Advanced-Scenariso-Workshop/3-1-MonitoringAgenticAIApplications/3-1-8-DetectQualityIssue/3-1-8-index.html', // required. HTML file path
+                prev: '3-1-7',
+                next: '3-1-9',
+                sub: [],
+              },
+              {
+                id: '3-1-9', // required. page ID
+                title: '9. Add AI Defense Instrumentation', // required. Bread crumbs text
+                menuName: '9. Add AI Defense Instrumentation', // required. Side bar text
+                href: '/o11y-workshop-kr/src/3-Advanced-Scenariso-Workshop/3-1-MonitoringAgenticAIApplications/3-1-9-AIDefence/3-1-9-index.html', // required. HTML file path
+                prev: '3-1-8',
                 next: '3-2',
                 sub: [],
               },
