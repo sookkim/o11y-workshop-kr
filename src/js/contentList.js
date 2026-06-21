@@ -389,6 +389,15 @@ var CONTENTS = [
                 menuName: '9. Add AI Defense Instrumentation', // required. Side bar text
                 href: '/o11y-workshop-kr/src/3-Advanced-Scenariso-Workshop/3-1-MonitoringAgenticAIApplications/3-1-9-AIDefence/3-1-9-index.html', // required. HTML file path
                 prev: '3-1-8',
+                next: '3-1-10',
+                sub: [],
+              },
+              {
+                id: '3-1-10', // required. page ID
+                title: '10. Detect Security Risks', // required. Bread crumbs text
+                menuName: '10. Detect Security Risks', // required. Side bar text
+                href: '/o11y-workshop-kr/src/3-Advanced-Scenariso-Workshop/3-1-MonitoringAgenticAIApplications/3-1-10-SecurityIssue/3-1-10-index.html', // required. HTML file path
+                prev: '3-1-9',
                 next: '3-2',
                 sub: [],
               },
